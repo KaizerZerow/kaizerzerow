@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -26,20 +27,21 @@
 
   <style>
     :root {
-      --bg-main: #090d16;
-      --bg-secondary: #111827;
-      --bg-card: #151e31;
-      --bg-card-hover: #1b2740;
-      --border-color: #23304c;
-      --accent: #3b82f6;
-      --accent-glow: rgba(59, 130, 246, 0.25);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --mod-red: #ef4444;
+      --bg-main: #040b1c;
+      --bg-secondary: #081533;
+      --bg-card: rgba(12, 28, 66, 0.80);
+      --bg-card-hover: rgba(18, 42, 96, 0.94);
+      --border-color: rgba(56, 189, 248, 0.36);
+      --accent: #38bdf8;
+      --accent-secondary: #60a5fa;
+      --accent-glow: rgba(56, 189, 248, 0.48);
+      --text-main: #f0f9ff;
+      --text-muted: #93c5fd;
+      --mod-red: #f43f5e;
       --free-green: #10b981;
       --success: #10b981;
       --whatsapp: #22c55e;
-      --telegram: #0ea5e9;
+      --telegram: #38bdf8;
       --font-main: 'Plus Jakarta Sans', sans-serif;
     }
 
@@ -52,6 +54,14 @@
 
     body {
       background-color: var(--bg-main);
+      background-image:
+        radial-gradient(circle at 18% 12%, rgba(56, 189, 248, 0.34) 0%, transparent 45%),
+        radial-gradient(circle at 86% 26%, rgba(59, 130, 246, 0.30) 0%, transparent 48%),
+        radial-gradient(circle at 50% 80%, rgba(14, 165, 233, 0.28) 0%, transparent 52%),
+        radial-gradient(circle at 22% 56%, rgba(99, 102, 241, 0.20) 0%, transparent 45%),
+        radial-gradient(rgba(125, 211, 252, 0.08) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 22px 22px;
+      background-attachment: fixed;
       color: var(--text-main);
       font-family: var(--font-main);
       max-width: 520px;
@@ -60,22 +70,98 @@
       padding-bottom: 85px;
       position: relative;
       overflow-x: hidden;
-      border-left: 1px solid rgba(255,255,255,0.04);
-      border-right: 1px solid rgba(255,255,255,0.04);
+      border-left: 1px solid rgba(56, 189, 248, 0.24);
+      border-right: 1px solid rgba(56, 189, 248, 0.24);
+      box-shadow: 0 0 75px rgba(56, 189, 248, 0.18);
     }
 
-    /* HEADER NAVBAR */
+    /* EFEK KUNANG-KUNANG BERCAHAYA JATUH DARI ATAS (PURE CSS) */
+    .fireflies-layer {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 520px;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 15;
+      overflow: hidden;
+    }
+
+    .firefly {
+      position: absolute;
+      top: -24px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 0%, #7dd3fc 42%, #38bdf8 72%, transparent 100%);
+      box-shadow: 0 0 10px 3px rgba(56, 189, 248, 0.9), 0 0 22px 6px rgba(96, 165, 250, 0.65);
+      opacity: 0;
+      animation: fireflyFall linear infinite;
+    }
+
+    .firefly.warm {
+      background: radial-gradient(circle, #ffffff 0%, #fde68a 45%, #38bdf8 80%, transparent 100%);
+      box-shadow: 0 0 11px 3px rgba(253, 224, 71, 0.85), 0 0 24px 6px rgba(56, 189, 248, 0.7);
+    }
+
+    .firefly:nth-child(1)  { left: 6%;  width: 6px; height: 6px; animation-duration: 9s;   animation-delay: 0s;   --sway: 24px; }
+    .firefly:nth-child(2)  { left: 14%; width: 5px; height: 5px; animation-duration: 12s;  animation-delay: 1.8s; --sway: -20px; }
+    .firefly:nth-child(3)  { left: 23%; width: 7px; height: 7px; animation-duration: 10.5s;animation-delay: 3.4s; --sway: 28px; }
+    .firefly:nth-child(4)  { left: 31%; width: 4px; height: 4px; animation-duration: 8.5s; animation-delay: 0.7s; --sway: -16px; }
+    .firefly:nth-child(5)  { left: 39%; width: 6px; height: 6px; animation-duration: 13s;  animation-delay: 4.5s; --sway: 22px; }
+    .firefly:nth-child(6)  { left: 48%; width: 7px; height: 7px; animation-duration: 9.8s; animation-delay: 2.2s; --sway: -26px; }
+    .firefly:nth-child(7)  { left: 56%; width: 5px; height: 5px; animation-duration: 11.2s;animation-delay: 5.1s; --sway: 18px; }
+    .firefly:nth-child(8)  { left: 64%; width: 6px; height: 6px; animation-duration: 8.8s; animation-delay: 1.2s; --sway: -22px; }
+    .firefly:nth-child(9)  { left: 73%; width: 8px; height: 8px; animation-duration: 12.5s;animation-delay: 3.9s; --sway: 26px; }
+    .firefly:nth-child(10) { left: 81%; width: 5px; height: 5px; animation-duration: 10.2s;animation-delay: 2.7s; --sway: -18px; }
+    .firefly:nth-child(11) { left: 89%; width: 6px; height: 6px; animation-duration: 9.4s; animation-delay: 0.4s; --sway: 20px; }
+    .firefly:nth-child(12) { left: 95%; width: 5px; height: 5px; animation-duration: 11.8s;animation-delay: 4.2s; --sway: -24px; }
+    .firefly:nth-child(13) { left: 18%; width: 6px; height: 6px; animation-duration: 10.8s;animation-delay: 6.2s; --sway: 20px; }
+    .firefly:nth-child(14) { left: 44%; width: 5px; height: 5px; animation-duration: 9.2s; animation-delay: 5.6s; --sway: -20px; }
+    .firefly:nth-child(15) { left: 68%; width: 7px; height: 7px; animation-duration: 11.5s;animation-delay: 6.8s; --sway: 24px; }
+    .firefly:nth-child(16) { left: 85%; width: 4px; height: 4px; animation-duration: 8.6s; animation-delay: 3.1s; --sway: -15px; }
+
+    @keyframes fireflyFall {
+      0% {
+        transform: translate3d(0, -20px, 0) scale(0.6);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.95;
+      }
+      35% {
+        transform: translate3d(var(--sway, 20px), 35vh, 0) scale(1.1);
+        opacity: 0.45;
+      }
+      55% {
+        opacity: 1;
+      }
+      75% {
+        transform: translate3d(calc(var(--sway, 20px) * -0.8), 75vh, 0) scale(0.9);
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translate3d(var(--sway, 20px), 106vh, 0) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    /* HEADER NAVBAR BLUE AESTHETIC GLOW */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 40;
-      background: rgba(9, 13, 22, 0.9);
-      backdrop-filter: blur(12px);
+      background: rgba(6, 15, 38, 0.88);
+      backdrop-filter: blur(16px);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 12px 16px;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.38);
+      box-shadow: 0 4px 25px rgba(56, 189, 248, 0.22);
       gap: 10px;
     }
 
@@ -88,8 +174,8 @@
     .icon-btn {
       width: 38px;
       height: 38px;
-      border-radius: 10px;
-      background: var(--bg-card);
+      border-radius: 11px;
+      background: rgba(14, 34, 78, 0.9);
       border: 1px solid var(--border-color);
       color: var(--text-main);
       display: flex;
@@ -97,21 +183,24 @@
       justify-content: center;
       cursor: pointer;
       font-size: 18px;
-      transition: 0.2s;
+      transition: 0.25s;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.16);
     }
 
     .icon-btn:hover {
       background: var(--bg-card-hover);
       border-color: var(--accent);
+      box-shadow: 0 0 16px var(--accent-glow);
     }
 
     .brand-title {
       font-size: 17px;
       font-weight: 800;
       letter-spacing: 0.5px;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      background: linear-gradient(90deg, #38bdf8, #bae6fd, #60a5fa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.5));
       white-space: nowrap;
     }
 
@@ -123,20 +212,25 @@
 
     .search-box input {
       width: 100%;
-      background: var(--bg-card);
+      background: rgba(9, 23, 56, 0.9);
       border: 1px solid var(--border-color);
       color: var(--text-main);
       padding: 8px 30px 8px 12px;
-      border-radius: 10px;
-      font-size: 13px;
+      border-radius: 99px;
+      font-size: 12.5px;
       font-family: inherit;
       outline: none;
-      transition: 0.2s;
+      transition: 0.25s;
+      box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.12);
+    }
+
+    .search-box input::placeholder {
+      color: rgba(186, 230, 253, 0.55);
     }
 
     .search-box input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px var(--accent-glow);
+      border-color: #7dd3fc;
+      box-shadow: 0 0 16px var(--accent-glow);
     }
 
     .search-box span {
@@ -153,70 +247,170 @@
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      background: #22c55e;
-      color: #052e16;
-      border: none;
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      color: #fff;
+      border: 1px solid rgba(186, 230, 253, 0.65);
       font-weight: 800;
       font-size: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.65);
+      transition: 0.2s;
+    }
+
+    .community-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.9);
+    }
+
+    /* BANNER SALURAN RESMI BIRU BERCAHAYA */
+    .wa-top-banner {
+      margin: 14px 16px 2px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.26) 0%, rgba(37, 99, 235, 0.22) 55%, rgba(14, 165, 233, 0.25) 100%);
+      border: 1px solid rgba(125, 211, 252, 0.55);
+      border-radius: 16px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: 0.25s;
+      box-shadow: 0 6px 26px rgba(56, 189, 248, 0.22), inset 0 0 20px rgba(56, 189, 248, 0.12);
+    }
+
+    .wa-top-banner:hover {
+      border-color: #bae6fd;
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.38);
+      transform: translateY(-1px);
+    }
+
+    .wa-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .wa-banner-ico {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      font-weight: 800;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
+    }
+
+    .wa-banner-text h5 {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #7dd3fc;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+
+    .wa-banner-text p {
+      font-size: 11px;
+      color: #e0f2fe;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .wa-join-pill {
+      background: linear-gradient(90deg, #0284c7, #2563eb);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 99px;
+      flex-shrink: 0;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.55);
     }
 
     /* SECTION HEADERS */
     .section-wrap {
-      padding: 16px 16px 4px;
+      padding: 15px 16px 6px;
     }
 
     .section-title {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 8px;
-      font-size: 16px;
+      font-size: 15.5px;
       font-weight: 800;
-      margin-bottom: 12px;
-      color: #e2e8f0;
+      margin-bottom: 10px;
+      color: #f0f9ff;
+      text-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
     }
 
-    /* REKOMENDASI SLIDER */
+    .section-title-left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .view-mode-pill {
+      font-size: 11px;
+      font-weight: 800;
+      color: #7dd3fc;
+      background: rgba(56, 189, 248, 0.18);
+      border: 1px solid rgba(125, 211, 252, 0.45);
+      padding: 4px 10px;
+      border-radius: 99px;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+    }
+
+    /* REKOMENDASI SLIDER BIRU AESTHETIC */
     .reco-scroll {
       display: flex;
       gap: 12px;
       overflow-x: auto;
-      padding-bottom: 8px;
+      padding-bottom: 10px;
       scrollbar-width: none;
     }
     .reco-scroll::-webkit-scrollbar { display: none; }
 
     .reco-card {
       min-width: 230px;
-      background: linear-gradient(145deg, #162138, #111827);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 14px;
+      background: linear-gradient(145deg, rgba(16, 38, 88, 0.9), rgba(8, 20, 48, 0.95));
+      border: 1px solid rgba(56, 189, 248, 0.42);
+      border-radius: 16px;
+      padding: 13px;
       position: relative;
       cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s;
+      transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s;
       display: flex;
       align-items: center;
       gap: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 18px rgba(56, 189, 248, 0.18);
     }
 
     .reco-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent);
+      transform: translateY(-3px);
+      border-color: #7dd3fc;
+      box-shadow: 0 8px 26px rgba(56, 189, 248, 0.38);
     }
 
     .reco-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+      width: 50px;
+      height: 50px;
+      border-radius: 13px;
       object-fit: cover;
       flex-shrink: 0;
-      background: #0f172a;
-      border: 1px solid rgba(255,255,255,0.12);
+      background: #040b1c;
+      border: 1px solid rgba(125, 211, 252, 0.35);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.32);
     }
 
     .reco-info {
@@ -226,18 +420,19 @@
 
     .reco-badge {
       display: inline-block;
-      background: rgba(16, 185, 129, 0.2);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.4);
+      background: rgba(56, 189, 248, 0.22);
+      color: #7dd3fc;
+      border: 1px solid rgba(125, 211, 252, 0.5);
       font-size: 9.5px;
       font-weight: 800;
       padding: 1.5px 7px;
       border-radius: 99px;
       margin-bottom: 4px;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
     }
 
     .reco-card h4 {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       margin-bottom: 3px;
       white-space: nowrap;
@@ -246,14 +441,14 @@
     }
 
     .reco-card p {
-      font-size: 11.5px;
-      color: var(--text-muted);
+      font-size: 11px;
+      color: #7dd3fc;
       display: flex;
       align-items: center;
       gap: 4px;
     }
 
-    /* ITEM CARDS (LIST & GRID) */
+    /* ITEM CARDS (LIST & GRID 2 KOLOM BIRU BERCAHAYA) */
     .items-container {
       display: flex;
       flex-direction: column;
@@ -263,51 +458,59 @@
 
     .items-container.grid-mode {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
     }
 
     .item-card {
-      background: var(--bg-card);
+      background: linear-gradient(160deg, rgba(15, 36, 82, 0.86) 0%, rgba(7, 18, 44, 0.94) 100%);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 14px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      transition: 0.2s;
+      transition: all 0.25s ease;
       cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 16px rgba(56, 189, 248, 0.14);
     }
 
     .items-container.grid-mode .item-card {
       flex-direction: column;
-      align-items: flex-start;
-      padding-top: 32px;
+      align-items: center;
+      text-align: center;
+      padding: 34px 12px 13px;
+      justify-content: space-between;
+      gap: 9px;
     }
 
     .item-card:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--accent);
+      background: linear-gradient(160deg, rgba(22, 50, 112, 0.95) 0%, rgba(10, 26, 62, 0.98) 100%);
+      border-color: #7dd3fc;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), 0 0 24px var(--accent-glow);
     }
 
-    /* LABEL FREE */
+    /* LABEL FREE BERCAHAYA */
     .free-tag {
       position: absolute;
       top: 8px;
-      left: 12px;
-      background: rgba(16, 185, 129, 0.16);
-      border: 1px solid rgba(16, 185, 129, 0.45);
-      color: #34d399;
-      font-size: 10px;
+      left: 10px;
+      background: rgba(16, 185, 129, 0.22);
+      border: 1px solid rgba(52, 211, 153, 0.55);
+      color: #6ee7b7;
+      font-size: 9.5px;
       font-weight: 800;
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: 6px;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
       letter-spacing: 0.4px;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
     }
 
     .card-left {
@@ -319,6 +522,14 @@
       margin-top: 14px;
     }
 
+    .items-container.grid-mode .card-left {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-top: 2px;
+      gap: 10px;
+    }
+
     /* ICON PLAY STORE ASLI + SPINNER CEPAT */
     .app-icon-wrap {
       position: relative;
@@ -327,25 +538,30 @@
       flex-shrink: 0;
     }
 
+    .items-container.grid-mode .app-icon-wrap {
+      width: 68px;
+      height: 68px;
+    }
+
     .app-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 14px;
-      background: #0f172a;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      background: #040b1c;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.55), 0 0 15px rgba(56, 189, 248, 0.3);
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.14);
+      border: 1.5px solid rgba(125, 211, 252, 0.38);
     }
 
     .app-icon img.real-logo {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 13px;
+      border-radius: 14px;
       position: relative;
       z-index: 2;
       opacity: 0;
@@ -360,8 +576,8 @@
       position: absolute;
       width: 22px;
       height: 22px;
-      border: 2.5px solid rgba(59, 130, 246, 0.25);
-      border-top-color: #3b82f6;
+      border: 2.5px solid rgba(56, 189, 248, 0.25);
+      border-top-color: var(--accent);
       border-radius: 50%;
       animation: spin 0.75s linear infinite;
       z-index: 1;
@@ -376,25 +592,26 @@
       bottom: -5px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--mod-red);
+      background: linear-gradient(90deg, #f43f5e, #e11d48);
       color: #fff;
       font-size: 9px;
       font-weight: 800;
-      padding: 1.5px 7px;
+      padding: 1.5px 8px;
       border-radius: 6px;
       letter-spacing: 0.5px;
-      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.5);
+      box-shadow: 0 2px 10px rgba(244, 63, 94, 0.65);
       z-index: 3;
     }
 
     .card-info {
       min-width: 0;
       flex: 1;
+      width: 100%;
     }
 
     .card-title {
-      font-size: 14.5px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 800;
       color: var(--text-main);
       line-height: 1.3;
       margin-bottom: 4px;
@@ -404,79 +621,107 @@
       overflow: hidden;
     }
 
+    .items-container.grid-mode .card-title {
+      font-size: 13px;
+      min-height: 34px;
+    }
+
     .card-sub {
-      font-size: 11.5px;
-      color: var(--text-muted);
+      font-size: 11px;
+      color: #bae6fd;
+      opacity: 0.85;
       display: flex;
       align-items: center;
-      gap: 5px;
-      margin-bottom: 8px;
+      gap: 4px;
+      margin-bottom: 7px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
+    .items-container.grid-mode .card-sub {
+      justify-content: center;
+    }
+
     .card-meta {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       flex-wrap: wrap;
     }
 
+    .items-container.grid-mode .card-meta {
+      justify-content: center;
+    }
+
     .ver-badge {
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid var(--border-color);
-      color: #cbd5e1;
-      font-size: 10.5px;
+      background: rgba(6, 15, 38, 0.88);
+      border: 1px solid rgba(56, 189, 248, 0.38);
+      color: #e0f2fe;
+      font-size: 10px;
       font-weight: 600;
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: 6px;
       font-family: 'JetBrains Mono', monospace;
     }
 
     .dl-btn {
-      background: rgba(37, 99, 235, 0.2);
-      border: 1px solid rgba(59, 130, 246, 0.45);
-      color: #60a5fa;
-      font-weight: 700;
-      font-size: 12px;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.22), rgba(37, 99, 235, 0.28));
+      border: 1px solid rgba(125, 211, 252, 0.55);
+      color: #7dd3fc;
+      font-weight: 800;
+      font-size: 11.5px;
       padding: 8px 14px;
-      border-radius: 10px;
+      border-radius: 11px;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.22s;
       flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.22);
     }
 
     .items-container.grid-mode .dl-btn {
       width: 100%;
       text-align: center;
-      margin-top: 6px;
+      margin-top: 4px;
+      background: linear-gradient(90deg, #0284c7, #2563eb);
+      color: #fff;
+      border: 1px solid rgba(125, 211, 252, 0.55);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.38);
     }
 
     .dl-btn:hover {
-      background: var(--accent);
-      color: #fff;
+      background: linear-gradient(90deg, #38bdf8, #3b82f6);
+      color: #040b1c;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.68);
     }
 
     /* SHOW MORE BUTTON */
     .show-more-wrap {
       display: flex;
       justify-content: center;
-      margin: 14px 0 8px;
+      margin: 16px 0 8px;
     }
 
     .show-more-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      color: #60a5fa;
-      padding: 8px 20px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
+      background: linear-gradient(135deg, rgba(16, 38, 88, 0.92), rgba(8, 20, 48, 0.95));
+      border: 1px solid rgba(125, 211, 252, 0.5);
+      color: #7dd3fc;
+      padding: 10px 22px;
+      border-radius: 99px;
+      font-size: 12.5px;
+      font-weight: 800;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.25);
+      transition: 0.2s;
+    }
+
+    .show-more-btn:hover {
+      border-color: #bae6fd;
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.45);
+      transform: translateY(-1px);
     }
 
     /* DETAIL VIEW PAGE */
@@ -493,7 +738,7 @@
 
     .breadcrumb {
       font-size: 12px;
-      color: var(--text-muted);
+      color: #bae6fd;
       margin-bottom: 14px;
       display: flex;
       align-items: center;
@@ -502,16 +747,18 @@
     }
 
     .breadcrumb span {
-      color: #60a5fa;
+      color: #38bdf8;
       cursor: pointer;
     }
 
     .detail-header-card {
       background: var(--bg-card);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 16px;
       margin-bottom: 14px;
+      box-shadow: 0 8px 26px rgba(0,0,0,0.45), 0 0 20px rgba(56, 189, 248, 0.16);
     }
 
     .detail-top {
@@ -525,14 +772,14 @@
       width: 78px;
       height: 78px;
       border-radius: 18px;
-      background: #0f172a;
+      background: #040b1c;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5), 0 0 16px rgba(56, 189, 248, 0.32);
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(125, 211, 252, 0.4);
     }
 
     .detail-icon img {
@@ -552,9 +799,9 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      background: rgba(16, 185, 129, 0.18);
-      border: 1px solid rgba(16, 185, 129, 0.45);
-      color: #34d399;
+      background: rgba(16, 185, 129, 0.22);
+      border: 1px solid rgba(52, 211, 153, 0.5);
+      color: #6ee7b7;
       font-size: 10px;
       font-weight: 800;
       padding: 2px 8px;
@@ -564,7 +811,7 @@
 
     .detail-title-box p {
       font-size: 12px;
-      color: var(--text-muted);
+      color: #bae6fd;
       margin-bottom: 3px;
     }
 
@@ -572,9 +819,9 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      background: rgba(16, 185, 129, 0.14);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: #34d399;
+      background: rgba(56, 189, 248, 0.18);
+      border: 1px solid rgba(125, 211, 252, 0.45);
+      color: #7dd3fc;
       font-size: 10.5px;
       font-weight: 800;
       padding: 3px 9px;
@@ -590,7 +837,7 @@
     }
 
     .action-card-btn {
-      background: #1a243a;
+      background: rgba(15, 36, 82, 0.85);
       border: 1px solid var(--border-color);
       color: var(--text-main);
       padding: 10px 6px;
@@ -608,22 +855,25 @@
     }
 
     .action-card-btn:hover {
-      border-color: var(--accent);
-      background: #212e49;
+      border-color: #7dd3fc;
+      background: rgba(22, 52, 116, 0.95);
+      box-shadow: 0 0 14px var(--accent-glow);
     }
 
     .action-card-btn span.act-ico {
       font-size: 16px;
-      color: #60a5fa;
+      color: #38bdf8;
     }
 
     /* PREPARING LINK BOX */
     .prep-box {
       background: var(--bg-card);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 16px;
       margin-bottom: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
 
     .prep-header {
@@ -638,7 +888,7 @@
     .prep-countdown {
       text-align: center;
       padding: 20px 10px;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(6, 15, 38, 0.72);
       border-radius: 12px;
       border: 1px dashed var(--border-color);
     }
@@ -646,7 +896,7 @@
     .progress-bar {
       width: 100%;
       height: 6px;
-      background: #1e293b;
+      background: #06122e;
       border-radius: 99px;
       margin-top: 12px;
       overflow: hidden;
@@ -655,7 +905,7 @@
     .progress-fill {
       height: 100%;
       width: 10%;
-      background: linear-gradient(90deg, #3b82f6, #10b981);
+      background: linear-gradient(90deg, #0284c7, #38bdf8, #7dd3fc);
       transition: width 0.35s ease;
     }
 
@@ -666,7 +916,7 @@
     }
 
     .dl-link-item {
-      background: linear-gradient(90deg, #1d4ed8, #2563eb);
+      background: linear-gradient(90deg, #0284c7, #2563eb);
       color: #fff;
       text-decoration: none;
       padding: 13px 15px;
@@ -675,7 +925,8 @@
       align-items: center;
       justify-content: space-between;
       transition: 0.2s;
-      border: 1px solid rgba(255,255,255,0.18);
+      border: 1px solid rgba(125, 211, 252, 0.4);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
       cursor: pointer;
       width: 100%;
       text-align: left;
@@ -684,7 +935,7 @@
 
     .dl-link-item.fast-mirror {
       background: linear-gradient(90deg, #059669, #10b981);
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.28);
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
     }
 
     .dl-link-item.vip-mirror {
@@ -705,7 +956,7 @@
     }
 
     .dl-link-item:hover {
-      filter: brightness(1.1);
+      filter: brightness(1.12);
       transform: translateY(-1px);
     }
 
@@ -722,7 +973,7 @@
 
     .dl-link-left div small {
       font-size: 11px;
-      color: #bfdbfe;
+      color: #e0f2fe;
     }
 
     .dl-link-item.fast-mirror .dl-link-left div small {
@@ -740,9 +991,9 @@
       justify-content: center;
       gap: 8px;
       width: 100%;
-      background: rgba(16, 185, 129, 0.14);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #34d399;
+      background: rgba(56, 189, 248, 0.16);
+      border: 1px solid rgba(125, 211, 252, 0.45);
+      color: #7dd3fc;
       text-decoration: none;
       padding: 10px;
       border-radius: 10px;
@@ -788,7 +1039,7 @@
     .poll-bar-track {
       flex: 1;
       height: 6px;
-      background: #1e293b;
+      background: #06122e;
       border-radius: 99px;
       overflow: hidden;
     }
@@ -796,7 +1047,7 @@
     .poll-bar-fill {
       height: 100%;
       width: 100%;
-      background: #10b981;
+      background: linear-gradient(90deg, #38bdf8, #10b981);
     }
 
     .poll-pct {
@@ -807,7 +1058,7 @@
 
     .voices-count {
       font-size: 11px;
-      color: var(--text-muted);
+      color: #bae6fd;
       margin-top: 4px;
       padding-left: 132px;
     }
@@ -820,7 +1071,7 @@
     .explore-cat-title {
       font-size: 11px;
       font-weight: 800;
-      color: var(--text-muted);
+      color: #bae6fd;
       letter-spacing: 0.6px;
       margin-bottom: 8px;
       text-transform: uppercase;
@@ -835,7 +1086,7 @@
     .cat-pill {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      color: #cbd5e1;
+      color: #f0f9ff;
       padding: 7px 13px;
       border-radius: 99px;
       font-size: 12px;
@@ -849,8 +1100,9 @@
     /* MOD FEATURES 2-COLUMN GRID */
     .mod-features-card {
       background: var(--bg-card);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 16px;
       margin-bottom: 16px;
     }
@@ -862,7 +1114,7 @@
       display: flex;
       align-items: center;
       gap: 7px;
-      color: #f8fafc;
+      color: #f0f9ff;
     }
 
     .mod-grid-2col {
@@ -872,8 +1124,8 @@
     }
 
     .mod-badge-item {
-      background: #1a2438;
-      border: 1px solid #263452;
+      background: rgba(15, 36, 82, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.32);
       border-radius: 11px;
       padding: 10px 10px;
       display: flex;
@@ -881,7 +1133,7 @@
       gap: 8px;
       font-size: 11.5px;
       font-weight: 700;
-      color: #e2e8f0;
+      color: #f0f9ff;
       line-height: 1.3;
     }
 
@@ -889,8 +1141,8 @@
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: rgba(16, 185, 129, 0.2);
-      color: #34d399;
+      background: rgba(56, 189, 248, 0.25);
+      color: #38bdf8;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -921,7 +1173,7 @@
     .see-all-btn {
       background: none;
       border: none;
-      color: #60a5fa;
+      color: #38bdf8;
       font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
@@ -941,7 +1193,7 @@
       min-width: 84%;
       height: 175px;
       border-radius: 14px;
-      background: #0c1322;
+      background: #040b1c;
       border: 1px solid var(--border-color);
       overflow: hidden;
       position: relative;
@@ -982,30 +1234,31 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #334155;
+      background: #17366e;
       transition: 0.2s;
     }
 
     .shot-dot.active {
       width: 18px;
       border-radius: 99px;
-      background: #3b82f6;
+      background: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.75);
     }
 
     /* DESKRIPSI & KEY LOGIN MENU BOX */
     .desc-box {
-      background: #101726;
+      background: rgba(6, 15, 38, 0.82);
       border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: 13px;
       font-size: 12.5px;
-      color: #cbd5e1;
+      color: #e0f2fe;
       line-height: 1.6;
     }
 
     .key-box {
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px dashed rgba(16, 185, 129, 0.5);
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px dashed rgba(125, 211, 252, 0.55);
       border-radius: 10px;
       padding: 10px 12px;
       display: flex;
@@ -1018,13 +1271,13 @@
     .key-box code {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11.5px;
-      color: #34d399;
+      color: #7dd3fc;
       word-break: break-all;
     }
 
     .copy-key-btn {
-      background: #10b981;
-      color: #090d16;
+      background: linear-gradient(90deg, #0284c7, #2563eb);
+      color: #fff;
       border: none;
       padding: 6px 10px;
       border-radius: 6px;
@@ -1038,8 +1291,8 @@
     .lightbox-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(4, 7, 14, 0.94);
-      backdrop-filter: blur(8px);
+      background: rgba(4, 11, 28, 0.95);
+      backdrop-filter: blur(10px);
       z-index: 120;
       display: none;
       flex-direction: column;
@@ -1075,7 +1328,7 @@
     .prelanding-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(5, 8, 16, 0.95);
+      background: rgba(3, 9, 23, 0.95);
       backdrop-filter: blur(14px);
       z-index: 99999;
       display: none;
@@ -1086,14 +1339,14 @@
     }
 
     .prelanding-card {
-      background: linear-gradient(180deg, #131c31 0%, #0d1322 100%);
-      border: 1px solid #2b3d63;
+      background: linear-gradient(180deg, #0e2456 0%, #051029 100%);
+      border: 1px solid rgba(56, 189, 248, 0.45);
       border-radius: 22px;
       width: 100%;
       max-width: 420px;
       padding: 22px 18px 20px;
       position: relative;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 32px rgba(56, 189, 248, 0.22);
       text-align: center;
       animation: fadeIn 0.22s ease;
     }
@@ -1116,21 +1369,22 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.45);
-      color: #34d399;
+      background: rgba(56, 189, 248, 0.2);
+      border: 1px solid rgba(125, 211, 252, 0.5);
+      color: #7dd3fc;
       font-size: 11px;
       font-weight: 800;
       padding: 4px 12px;
       border-radius: 99px;
       margin-bottom: 12px;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
     }
 
     .pre-app-box {
       display: flex;
       align-items: center;
       gap: 12px;
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(6, 15, 38, 0.85);
       border: 1px solid var(--border-color);
       padding: 12px;
       border-radius: 14px;
@@ -1150,25 +1404,25 @@
     .pre-app-info h4 {
       font-size: 14.5px;
       font-weight: 800;
-      color: #f8fafc;
+      color: #f0f9ff;
       margin-bottom: 3px;
     }
 
     .pre-app-info p {
       font-size: 11.5px;
-      color: #94a3b8;
+      color: #bae6fd;
       margin-bottom: 4px;
     }
 
     .pre-status-list {
-      background: rgba(15, 23, 42, 0.65);
-      border: 1px solid rgba(59, 130, 246, 0.28);
+      background: rgba(6, 15, 38, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: 12px;
       padding: 10px 12px;
       margin-bottom: 12px;
       text-align: left;
       font-size: 11.5px;
-      color: #cbd5e1;
+      color: #e0f2fe;
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -1204,7 +1458,7 @@
     .pre-timer-bar {
       width: 100%;
       height: 7px;
-      background: #1e293b;
+      background: #06122e;
       border-radius: 99px;
       overflow: hidden;
       margin-bottom: 7px;
@@ -1213,7 +1467,7 @@
     .pre-timer-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #f59e0b, #10b981);
+      background: linear-gradient(90deg, #f59e0b, #38bdf8, #10b981);
       transition: width 0.9s linear;
     }
 
@@ -1226,7 +1480,7 @@
     .pre-step-label {
       font-size: 11px;
       font-weight: 800;
-      color: #93c5fd;
+      color: #7dd3fc;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 8px;
@@ -1262,7 +1516,7 @@
     .pre-btn-step1.completed {
       background: rgba(16, 185, 129, 0.2);
       border: 1px solid #10b981;
-      color: #34d399;
+      color: #6ee7b7;
       box-shadow: none;
       animation: none;
     }
@@ -1278,8 +1532,8 @@
 
     .pre-btn-step2 {
       width: 100%;
-      background: linear-gradient(90deg, #2563eb, #1d4ed8);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: linear-gradient(90deg, #0284c7, #2563eb);
+      border: 1px solid rgba(125, 211, 252, 0.4);
       color: #fff;
       font-family: inherit;
       font-size: 13.5px;
@@ -1292,19 +1546,22 @@
       justify-content: center;
       gap: 8px;
       transition: 0.2s;
+      box-shadow: 0 4px 18px rgba(56, 189, 248, 0.4);
     }
 
     .pre-btn-step2.locked {
-      background: #1e293b;
-      border-color: #334155;
+      background: #0d214d;
+      border-color: #1a3a7a;
       color: #64748b;
       cursor: pointer;
       opacity: 0.8;
+      box-shadow: none;
     }
 
     .pre-footer-note {
       font-size: 11px;
-      color: var(--text-muted);
+      color: #bae6fd;
+      opacity: 0.8;
       margin-top: 12px;
       line-height: 1.45;
     }
@@ -1315,13 +1572,13 @@
       bottom: 90px;
       left: 50%;
       transform: translateX(-50%) translateY(20px);
-      background: #10b981;
-      color: #052e16;
+      background: linear-gradient(90deg, #0284c7, #2563eb);
+      color: #fff;
       font-weight: 800;
       font-size: 12.5px;
       padding: 10px 18px;
       border-radius: 99px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.5);
       z-index: 200;
       opacity: 0;
       pointer-events: none;
@@ -1337,8 +1594,8 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(4, 7, 13, 0.82);
-      backdrop-filter: blur(8px);
+      background: rgba(3, 9, 23, 0.85);
+      backdrop-filter: blur(10px);
       z-index: 100;
       display: flex;
       align-items: center;
@@ -1347,15 +1604,15 @@
     }
 
     .popup-box {
-      background: #121826;
-      border: 1px solid #26334d;
+      background: linear-gradient(165deg, #0f275c 0%, #051029 100%);
+      border: 1px solid rgba(56, 189, 248, 0.45);
       border-radius: 22px;
       width: 100%;
       max-width: 370px;
       padding: 24px 20px 20px;
       text-align: center;
       position: relative;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.65);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(56, 189, 248, 0.25);
     }
 
     .popup-close {
@@ -1371,15 +1628,16 @@
 
     .stay-pill {
       display: inline-block;
-      background: rgba(37, 99, 235, 0.2);
-      border: 1px solid rgba(59, 130, 246, 0.45);
-      color: #60a5fa;
+      background: rgba(56, 189, 248, 0.2);
+      border: 1px solid rgba(125, 211, 252, 0.5);
+      color: #7dd3fc;
       font-size: 11px;
       font-weight: 800;
       padding: 4px 14px;
       border-radius: 99px;
       margin-bottom: 12px;
       letter-spacing: 0.6px;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
     }
 
     .popup-box h2 {
@@ -1391,7 +1649,7 @@
 
     .popup-box p {
       font-size: 12.5px;
-      color: var(--text-muted);
+      color: #e0f2fe;
       line-height: 1.5;
       margin-bottom: 18px;
     }
@@ -1400,8 +1658,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #1a2336;
-      border: 1px solid #2b3954;
+      background: rgba(15, 36, 82, 0.85);
+      border: 1px solid var(--border-color);
       padding: 12px 14px;
       border-radius: 14px;
       text-decoration: none;
@@ -1411,8 +1669,9 @@
     }
 
     .channel-btn:hover {
-      border-color: var(--accent);
-      background: #202b42;
+      border-color: #7dd3fc;
+      background: rgba(22, 52, 116, 0.95);
+      box-shadow: 0 0 14px var(--accent-glow);
     }
 
     .channel-left {
@@ -1432,8 +1691,8 @@
       font-size: 20px;
     }
 
-    .ch-icon.wa { background: rgba(34, 197, 94, 0.16); color: #4ade80; }
-    .ch-icon.tg { background: rgba(14, 165, 233, 0.16); color: #38bdf8; }
+    .ch-icon.wa { background: rgba(34, 197, 94, 0.22); color: #4ade80; }
+    .ch-icon.tg { background: rgba(56, 189, 248, 0.22); color: #38bdf8; }
 
     .channel-left h4 {
       font-size: 13.5px;
@@ -1442,7 +1701,7 @@
 
     .channel-left small {
       font-size: 11px;
-      color: var(--text-muted);
+      color: #bae6fd;
     }
 
     .dont-show {
@@ -1451,7 +1710,7 @@
       justify-content: center;
       gap: 8px;
       font-size: 12px;
-      color: var(--text-muted);
+      color: #bae6fd;
       margin-top: 12px;
       cursor: pointer;
     }
@@ -1460,7 +1719,7 @@
     .drawer-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(5, 8, 15, 0.85);
+      background: rgba(3, 9, 23, 0.85);
       z-index: 90;
       display: none;
     }
@@ -1472,7 +1731,7 @@
       bottom: 0;
       width: 100%;
       max-width: 420px;
-      background: #0b0f19;
+      background: #051029;
       z-index: 95;
       padding: 20px 16px 40px;
       overflow-y: auto;
@@ -1501,8 +1760,8 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background: #151e31;
-      border: 1px solid #283756;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.25), rgba(37, 99, 235, 0.25));
+      border: 1px solid rgba(125, 211, 252, 0.55);
       color: #fff;
       text-decoration: none;
       padding: 13px;
@@ -1510,18 +1769,19 @@
       font-weight: 700;
       font-size: 14px;
       margin-bottom: 20px;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
     }
 
     .drawer-group-label {
       font-size: 11px;
       font-weight: 800;
-      color: var(--text-muted);
+      color: #bae6fd;
       letter-spacing: 0.8px;
       margin: 14px 0 8px 4px;
     }
 
     .drawer-list {
-      background: #121929;
+      background: rgba(12, 28, 66, 0.9);
       border: 1px solid var(--border-color);
       border-radius: 16px;
       overflow: hidden;
@@ -1541,7 +1801,7 @@
     }
 
     .drawer-item:last-child { border-bottom: none; }
-    .drawer-item:hover { background: rgba(255,255,255,0.03); }
+    .drawer-item:hover { background: rgba(56, 189, 248, 0.12); }
 
     .drawer-item-left {
       display: flex;
@@ -1550,7 +1810,7 @@
     }
 
     .donate-card {
-      background: #121929;
+      background: rgba(12, 28, 66, 0.9);
       border: 1px solid var(--border-color);
       border-radius: 16px;
       padding: 14px;
@@ -1568,14 +1828,14 @@
 
     .donate-card p {
       font-size: 12px;
-      color: var(--text-muted);
+      color: #e0f2fe;
       margin-bottom: 8px;
     }
 
     .donate-card span {
       font-size: 12px;
       font-weight: 700;
-      color: #60a5fa;
+      color: #38bdf8;
     }
 
     /* SETTINGS SHEET */
@@ -1590,12 +1850,13 @@
     }
 
     .settings-sheet {
-      background: #131b2e;
+      background: #081b42;
       border-top: 1px solid var(--border-color);
       border-radius: 22px 22px 0 0;
       width: 100%;
       max-width: 520px;
       padding: 20px 18px 28px;
+      box-shadow: 0 -10px 30px rgba(56, 189, 248, 0.2);
     }
 
     .color-dots {
@@ -1615,13 +1876,14 @@
     .color-dot.active {
       border-color: #fff;
       transform: scale(1.1);
+      box-shadow: 0 0 12px currentColor;
     }
 
     .toggle-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
-      background: #0b0f19;
+      background: #040b1c;
       padding: 4px;
       border-radius: 12px;
       margin: 8px 0 16px;
@@ -1634,12 +1896,12 @@
       font-weight: 700;
       border-radius: 9px;
       cursor: pointer;
-      color: var(--text-muted);
+      color: #bae6fd;
     }
 
     .toggle-opt.active {
       background: var(--accent);
-      color: #fff;
+      color: #040b1c;
     }
 
     /* FLOATING BUTTONS */
@@ -1650,14 +1912,14 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: #16a34a;
-      color: #fff;
+      background: linear-gradient(135deg, #22c55e, #10b981);
+      color: #04120c;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 22px;
       text-decoration: none;
-      box-shadow: 0 6px 18px rgba(22, 163, 74, 0.45);
+      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.6);
       z-index: 35;
     }
 
@@ -1683,13 +1945,13 @@
       font-size: 19px;
       cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
     }
 
-    .float-rocket { background: #4f46e5; }
-    .float-tg { background: #0284c7; }
+    .float-rocket { background: linear-gradient(135deg, #2563eb, #38bdf8); box-shadow: 0 0 16px rgba(56, 189, 248, 0.55); }
+    .float-tg { background: linear-gradient(135deg, #38bdf8, #0284c7); box-shadow: 0 0 16px rgba(56, 189, 248, 0.5); }
 
-    /* BOTTOM NAVIGATION */
+    /* BOTTOM NAVIGATION BLUE GLOW */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -1697,9 +1959,10 @@
       transform: translateX(-50%);
       width: 100%;
       max-width: 520px;
-      background: rgba(11, 15, 25, 0.95);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid var(--border-color);
+      background: rgba(6, 15, 38, 0.94);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 -4px 25px rgba(56, 189, 248, 0.18);
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       padding: 8px 6px 10px;
@@ -1712,15 +1975,17 @@
       align-items: center;
       justify-content: center;
       gap: 3px;
-      color: var(--text-muted);
+      color: rgba(186, 230, 253, 0.65);
       font-size: 10.5px;
       font-weight: 600;
       cursor: pointer;
       position: relative;
+      transition: 0.2s;
     }
 
     .bnav-item.active {
-      color: var(--accent);
+      color: #38bdf8;
+      text-shadow: 0 0 10px var(--accent-glow);
     }
 
     .bnav-icon {
@@ -1732,23 +1997,45 @@
       position: absolute;
       top: -6px;
       right: -14px;
-      background: #10b981;
-      color: #052e16;
+      background: linear-gradient(90deg, #38bdf8, #2563eb);
+      color: #fff;
       font-size: 9px;
       font-weight: 800;
       padding: 1px 5px;
       border-radius: 99px;
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
     }
 
     footer {
       text-align: center;
       font-size: 12px;
-      color: var(--text-muted);
+      color: #bae6fd;
+      opacity: 0.8;
       padding: 28px 16px 12px;
     }
   </style>
 </head>
 <body>
+
+  <!-- ANIMASI KUNANG-KUNANG BERCAHAYA JATUH DARI ATAS -->
+  <div class="fireflies-layer" aria-hidden="true">
+    <span class="firefly"></span>
+    <span class="firefly warm"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly warm"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly warm"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly warm"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly warm"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+  </div>
 
   <!-- TOAST NOTIFICATION (PENGGANTI ALERT) -->
   <div class="toast-msg" id="toastMsg">Berhasil disalin!</div>
@@ -1761,7 +2048,7 @@
       <button class="prelanding-close" onclick="closePreLanding()">✕</button>
       <div class="pre-security-pill">🛡️ SERVER HIGH-SPEED TERVERIFIKASI</div>
       <h3 style="font-size:18px; font-weight:800; margin-bottom:6px;">Siapkan Unduhan Anda</h3>
-      <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+      <p style="font-size:12px; color:#e0f2fe; margin-bottom:12px;">
         Selesaikan verifikasi koneksi server <strong>10 detik</strong> di bawah untuk membuka tautan unduhan kecepatan penuh.
       </p>
 
@@ -1771,14 +2058,14 @@
           <h4 id="preAppTitle">Nama Game MOD</h4>
           <p id="preLinkLabel">Paket File APK + MOD</p>
           <span class="ver-badge" id="preAppVer">v1.0</span>
-          <span class="ver-badge" style="color:#34d399; border-color:rgba(16,185,129,0.4);">✓ Work 100%</span>
+          <span class="ver-badge" style="color:#6ee7b7; border-color:rgba(52,211,153,0.4);">✓ Work 100%</span>
         </div>
       </div>
 
       <div class="pre-status-list">
         <div class="pre-status-row">
           <span>🔍 Pemindaian Antivirus & Keamanan</span>
-          <strong style="color:#34d399;">Aman (Clean) ✓</strong>
+          <strong style="color:#6ee7b7;">Aman (Clean) ✓</strong>
         </div>
         <div class="pre-status-row">
           <span>⚡ Jalur Server CDN Indonesia</span>
@@ -1828,7 +2115,7 @@
           <div class="ch-icon wa">💬</div>
           <div>
             <h4>SALURAN WHATSAPP</h4>
-            <small>Update Resmi</small>
+            <small>Update MOD Resmi Setiap Hari</small>
           </div>
         </div>
         <span>›</span>
@@ -1839,7 +2126,7 @@
           <div class="ch-icon tg">✈️</div>
           <div>
             <h4>SALURAN TELEGRAM</h4>
-            <small>Diskusi & Request</small>
+            <small>Diskusi & Request Game Free</small>
           </div>
         </div>
         <span>›</span>
@@ -1936,26 +2223,45 @@
 
   <!-- MAIN HOME / LIST VIEW -->
   <main id="mainView">
+    <!-- BANNER LANGSUNG KE SALURAN WHATSAPP -->
+    <a href="https://whatsapp.com/channel/0029VbC7IhRI7BeHYHzG052D" target="_blank" class="wa-top-banner">
+      <div class="wa-banner-left">
+        <div class="wa-banner-ico">💬</div>
+        <div class="wa-banner-text">
+          <h5>Saluran Resmi KAIZER ZEROW MOD</h5>
+          <p>Gabung untuk info update game & key MOD terbaru!</p>
+        </div>
+      </div>
+      <span class="wa-join-pill">Gabung ›</span>
+    </a>
+
     <!-- REKOMENDASI SLIDER -->
     <section class="section-wrap" id="recoSection">
-      <div class="section-title">🪄 Rekomendasi Free Populer</div>
+      <div class="section-title">
+        <div class="section-title-left">🪄 Rekomendasi Free Populer</div>
+      </div>
       <div class="reco-scroll" id="recoContainer"></div>
     </section>
 
-    <!-- GAME SECTION -->
+    <!-- GAME SECTION (DEFAULT GRID 2 KOLOM) -->
     <section class="section-wrap" id="gameSection">
-      <div class="section-title" id="gameHeading">🎮 Game MOD Free</div>
+      <div class="section-title">
+        <div class="section-title-left" id="gameHeading">🎮 Game MOD Free</div>
+        <span class="view-mode-pill" onclick="toggleSettings(true)">⊞ Mode Grid</span>
+      </div>
     </section>
-    <div class="items-container" id="gameList"></div>
+    <div class="items-container grid-mode" id="gameList"></div>
     <div class="show-more-wrap" id="gameMoreWrap">
       <button class="show-more-btn" id="toggleGameBtn" onclick="toggleShowAllGames()">Tampilkan Semua Game ⌄</button>
     </div>
 
-    <!-- APLIKASI SECTION -->
+    <!-- APLIKASI SECTION (DEFAULT GRID 2 KOLOM) -->
     <section class="section-wrap" id="appSection" style="margin-top: 12px;">
-      <div class="section-title" id="appHeading">🎛️ Aplikasi MOD Free</div>
+      <div class="section-title">
+        <div class="section-title-left" id="appHeading">🎛️ Aplikasi MOD Free</div>
+      </div>
     </section>
-    <div class="items-container" id="appList"></div>
+    <div class="items-container grid-mode" id="appList"></div>
   </main>
 
   <!-- DETAIL VIEW -->
@@ -1964,7 +2270,7 @@
       <span onclick="closeDetailView()">Home</span> ›
       <span id="bcCategory" onclick="closeDetailView()">Games</span> ›
       <span id="bcGenre">Simulation</span> ›
-      <strong id="bcTitle" style="color:#e2e8f0;">Detail</strong>
+      <strong id="bcTitle" style="color:#f0f9ff;">Detail</strong>
     </div>
 
     <!-- HEADER CARD DENGAN 3 TOMBOL: DOWNLOAD, PLAY STORE, SHARE -->
@@ -1975,7 +2281,7 @@
           <h2 id="detailTitle">Nama Game</h2>
           <div class="detail-free-badge">✓ FREE</div>
           <p id="detailDev">Developer: KAIZER ZEROW MOD</p>
-          <p style="font-size:11.5px; color:#64748b;">⭐ 4.8 • Terverifikasi Play Store</p>
+          <p style="font-size:11.5px; color:#bae6fd;">⭐ 4.8 • Terverifikasi Play Store</p>
           <div class="apk-pill">🛠️ 100% MOD</div>
         </div>
       </div>
@@ -2005,9 +2311,9 @@
       <div class="prep-countdown" id="prepCountdownBox">
         <div style="font-size:28px; margin-bottom:6px;">☁️</div>
         <div style="font-size:13px; font-weight:800; letter-spacing:0.6px;">
-          PREPARING SERVER LINK... <span id="timerSec" style="color:#34d399;">10s</span>
+          PREPARING SERVER LINK... <span id="timerSec" style="color:#38bdf8;">10s</span>
         </div>
-        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;" id="prepStatusSub">
+        <div style="font-size:11px; color:#bae6fd; margin-top:4px;" id="prepStatusSub">
           Menyiapkan jalur unduhan tercepat untuk perangkat Anda...
         </div>
         <div class="progress-bar">
@@ -2070,7 +2376,7 @@
 
   <footer>
     © 2026 KAIZER ZEROW MOD | All Rights Reserved<br/>
-    <small>Support Creator via <a href="https://sociabuzz.com/tancirott/donate" target="_blank" style="color:#60a5fa;">SociaBuzz Donate</a></small>
+    <small>Support Creator via <a href="https://sociabuzz.com/tancirott/donate" target="_blank" style="color:#38bdf8;">SociaBuzz Donate</a></small>
   </footer>
 
   <!-- MODAL PENGATURAN TEMA & TAMPILAN -->
@@ -2078,22 +2384,22 @@
     <div class="settings-sheet">
       <h3 style="margin-bottom:14px;">⚙️ Pengaturan Tampilan</h3>
 
-      <div style="font-size:12.5px; color:var(--text-muted);">Tema Warna</div>
+      <div style="font-size:12.5px; color:#bae6fd;">Tema Warna Aesthetic Glow</div>
       <div class="color-dots">
-        <div class="color-dot active" style="background:#3b82f6;" onclick="setThemeColor('#3b82f6', this)"></div>
-        <div class="color-dot" style="background:#10b981;" onclick="setThemeColor('#10b981', this)"></div>
-        <div class="color-dot" style="background:#ef4444;" onclick="setThemeColor('#ef4444', this)"></div>
-        <div class="color-dot" style="background:#8b5cf6;" onclick="setThemeColor('#8b5cf6', this)"></div>
-        <div class="color-dot" style="background:#f59e0b;" onclick="setThemeColor('#f59e0b', this)"></div>
+        <div class="color-dot active" style="background:#38bdf8; color:#38bdf8;" onclick="setThemeColor('#38bdf8', this)" title="Blue Aesthetic Glow"></div>
+        <div class="color-dot" style="background:#10b981; color:#10b981;" onclick="setThemeColor('#10b981', this)" title="Emerald Green Glow"></div>
+        <div class="color-dot" style="background:#a855f7; color:#a855f7;" onclick="setThemeColor('#a855f7', this)" title="Neon Purple Glow"></div>
+        <div class="color-dot" style="background:#f43f5e; color:#f43f5e;" onclick="setThemeColor('#f43f5e', this)" title="Crimson Rose Glow"></div>
+        <div class="color-dot" style="background:#f59e0b; color:#f59e0b;" onclick="setThemeColor('#f59e0b', this)" title="Solar Gold Glow"></div>
       </div>
 
-      <div style="font-size:12.5px; color:var(--text-muted);">Mode Tampilan Kartu</div>
+      <div style="font-size:12.5px; color:#bae6fd;">Mode Tampilan Kartu</div>
       <div class="toggle-row">
-        <div class="toggle-opt active" id="modeListBtn" onclick="setLayoutMode('list')">☰ Daftar</div>
-        <div class="toggle-opt" id="modeGridBtn" onclick="setLayoutMode('grid')">⊞ Grid</div>
+        <div class="toggle-opt active" id="modeGridBtn" onclick="setLayoutMode('grid')">⊞ Grid (2 Kolom)</div>
+        <div class="toggle-opt" id="modeListBtn" onclick="setLayoutMode('list')">☰ Daftar</div>
       </div>
 
-      <button class="action-card-btn" style="width:100%; background:var(--accent); color:#fff; flex-direction:row;" onclick="toggleSettings(false)">Selesai & Tutup</button>
+      <button class="action-card-btn" style="width:100%; background:var(--accent); color:#040b1c; flex-direction:row; font-weight:800;" onclick="toggleSettings(false)">Selesai & Tutup</button>
     </div>
   </div>
 
@@ -2111,7 +2417,7 @@
       <span>Beranda</span>
     </div>
     <div class="bnav-item" id="tab-game" onclick="switchTab('game')">
-      <div class="bnav-icon">🎮<span class="bnav-badge" id="gameCountBadge">25</span></div>
+      <div class="bnav-icon">🎮<span class="bnav-badge" id="gameCountBadge">30</span></div>
       <span>Game</span>
     </div>
     <div class="bnav-item" id="tab-app" onclick="switchTab('app')">
@@ -2119,7 +2425,7 @@
       <span>Aplikasi</span>
     </div>
     <div class="bnav-item" id="tab-free" onclick="switchTab('free')">
-      <div class="bnav-icon">🎁<span class="bnav-badge" id="freeCountBadge">35</span></div>
+      <div class="bnav-icon">🎁<span class="bnav-badge" id="freeCountBadge">40</span></div>
       <span>Free</span>
     </div>
     <div class="bnav-item" onclick="toggleSettings(true)">
@@ -2369,7 +2675,7 @@
           timerCountText.textContent = '100% ✓';
           liveStepText.textContent = '✅ Sesi Terverifikasi! File Siap Diunduh';
           serverStatus.textContent = 'Terhubung (Kecepatan Penuh) ✓';
-          serverStatus.style.color = '#34d399';
+          serverStatus.style.color = '#6ee7b7';
           document.getElementById('preStepInstruction').textContent = '✅ LANGKAH 2: AMBIL FILE APK UTAMA ANDA';
           btn2.classList.remove('locked');
           btn2Text.textContent = '📥 LANJUTKAN KE FILE DOWNLOAD SEKARANG →';
@@ -2406,12 +2712,12 @@
     }
 
     // Bersihkan cache khusus untuk game yang diperbaiki agar langsung memuat icon & screenshot Google Play Store terbaru
-    if (!safeGetStorage('tanciro_store_v7_cleaned')) {
-      ['worms-zone-io', 'super-bear-adventure', 'herex-simulator-indonesia', 'extreme-car-driving', 'truckers-of-europe-3'].forEach(id => {
+    if (!safeGetStorage('tanciro_store_v8_cleaned')) {
+      ['worms-zone-io', 'super-bear-adventure', 'herex-simulator-indonesia', 'extreme-car-driving', 'truckers-of-europe-3', 'xtreme-motorbikes-mod', 'drag-bike-201m-sunmori', 'soul-knight-mod', 'frag-pro-shooter-mod', 'minecraft-mod-apk'].forEach(id => {
         safeRemoveStorage('ps_v5_icon_' + id);
         safeRemoveStorage('ps_v5_shots_' + id);
       });
-      safeSetStorage('tanciro_store_v7_cleaned', 'true');
+      safeSetStorage('tanciro_store_v8_cleaned', 'true');
     }
 
     // Ambil Icon Tersimpan atau Gunakan Query Bersih Play Store
@@ -2493,6 +2799,164 @@
             label: "TSC HNMOD AUTO WIN - STAT+ UNLOCK ALL SKIN OR CHARACTERS S+",
             url: "https://move2link.co/ebe3fd6"
           }
+        ]
+      },
+      {
+        id: "minecraft-mod-apk",
+        type: "game",
+        genre: "Adventure",
+        recommended: true,
+        title: "Minecraft MOD APK (Full Unlocked)",
+        developer: "Mojang • Bedrock Edition Mod",
+        version: "v1.21.50",
+        pkg: "com.mojang.minecraftpe",
+        storeTerm: "Minecraft",
+        playSearchQuery: "Minecraft Mojang",
+        cleanIconQuery: "Minecraft Mojang Google Play Store app icon logo",
+        cleanShotBase: "Minecraft Bedrock Edition Mojang",
+        modBadges: [
+          "Unlock All Premium Skins",
+          "Unlock All Texture Packs",
+          "God Mode / Immortality",
+          "One Hit Kill & High Damage",
+          "Unlimited Breath & Inventory",
+          "Xbox Live Login Support"
+        ],
+        features: [
+          "Full Version Unlocked: Gratis akses seluruh fitur Minecraft Pocket/Bedrock Edition.",
+          "Unlock All Premium Skins, Marketplace Texture Packs, dan Worlds.",
+          "MOD Menu: God Mode (Kebal), One Hit Kill, Terbang di Mode Survival, dan Max Inventory."
+        ],
+        links: [
+          { label: "Download Minecraft Mod Apk Full Unlocked", url: "https://move2link.co/2ecaa8d" }
+        ]
+      },
+      {
+        id: "xtreme-motorbikes-mod",
+        type: "game",
+        genre: "Simulation",
+        recommended: true,
+        title: "Xtreme Motorbikes MOD APK",
+        developer: "Xtreme Games Studio",
+        version: "v2.4.1",
+        pkg: "com.xtremegames.xtrememotorbikes",
+        storeTerm: "Xtreme Motorbikes",
+        playSearchQuery: "Xtreme Motorbikes Xtreme Games Studio",
+        cleanIconQuery: "Xtreme Motorbikes Google Play Store app icon",
+        cleanShotBase: "Xtreme Motorbikes Xtreme Games Studio",
+        modBadges: [
+          "Unlimited Money & Coins",
+          "Unlock Semua Motor Sport",
+          "Full Custom Knalpot & Velg",
+          "Unlock Semua Rider & Helm",
+          "Freestyle Wheelie & Stoppie",
+          "No Ads / Bebas Iklan"
+        ],
+        features: [
+          "Unlimited Money / Uang Tak Terbatas untuk membeli lebih dari 25 motor sport & moge impian.",
+          "Semua kustomisasi cat, velg, knalpot racing, dan karakter rider langsung terbuka.",
+          "Fisika motor realistis dengan suara mesin asli dan bebas gangguan iklan."
+        ],
+        links: [
+          { label: "Download Xtreme Motorbikes Mod Apk", url: "https://move2link.co/247701e" }
+        ]
+      },
+      {
+        id: "drag-bike-201m-sunmori",
+        type: "game",
+        genre: "Racing",
+        recommended: true,
+        title: "Drag Bike 201m Sunmori MOD APK",
+        developer: "IDBS / Sunmori Studio • Mod Indonesia",
+        version: "Latest Mod",
+        pkg: "com.sunmori.dragbike201m",
+        scrapePlayStoreFirst: true,
+        playSearchQuery: "Drag Bike 201m Sunmori Simulator Indonesia",
+        cleanIconQuery: "Drag Bike 201m Sunmori Indonesia Google Play app icon",
+        cleanShotBase: "Drag Bike 201m Sunmori Indonesia",
+        shotQueries: [
+          "Drag Bike 201m Sunmori Indonesia gameplay screenshot",
+          "Balap motor Drag Bike 201m Indonesia android gameplay",
+          "Sunmori Simulator Indonesia motor drag garasi modifikasi",
+          "Drag Bike 201m lintasan balap lurus malam screenshot",
+          "Game motor Sunmori Drag Bike 201m Indonesia",
+          "Modifikasi motor thailook Drag Bike 201m gameplay"
+        ],
+        modBadges: [
+          "Unlimited Money / Uang",
+          "Unlock Semua Motor Drag",
+          "Mode Sunmori & Balap 201m",
+          "Full Modifikasi Thailook",
+          "Upgrade Spek Mesin Bore Up",
+          "No Ads / Tanpa Iklan"
+        ],
+        features: [
+          "Unlimited Money untuk membeli semua motor drag legendaris dan motor matic/sport Sunmori.",
+          "Bebas modifikasi gaya Thailook, ganti knalpot racing, velg jari-jari, dan bore-up mesin.",
+          "Tersedia mode santai keliling map Sunmori Indonesia dan trek balap lurus 201m."
+        ],
+        links: [
+          { label: "Download Drag Bike 201m Sunmori Mod", url: "https://move2link.co/1079e0f" }
+        ]
+      },
+      {
+        id: "soul-knight-mod",
+        type: "game",
+        genre: "Action",
+        recommended: true,
+        title: "Soul Knight MOD APK",
+        developer: "ChillyRoom • Mod Menu",
+        version: "v6.7.0",
+        pkg: "com.ChillyRoom.DungeonShooter",
+        storeTerm: "Soul Knight",
+        playSearchQuery: "Soul Knight ChillyRoom",
+        cleanIconQuery: "Soul Knight ChillyRoom Google Play Store app icon",
+        cleanShotBase: "Soul Knight ChillyRoom",
+        modBadges: [
+          "MOD Menu Lengkap",
+          "Unlimited Gems & Fish Chips",
+          "Unlock All Paid Heroes",
+          "Unlock All Skins & Skills",
+          "God Mode & Infinite Energy",
+          "No Skill Cooldown"
+        ],
+        features: [
+          "MOD Menu Lengkap: Unlimited Gems, Fish Chips, dan Material Crafting.",
+          "Unlock semua Hero berbayar, semua Skin eksklusif, Pet, dan Skill ke-2/ke-3.",
+          "God Mode (Kebal), Energi/Mana tidak pernah habis, dan tanpa jeda Cooldown skill."
+        ],
+        links: [
+          { label: "Download Soul Knight Mod Apk", url: "https://move2link.co/9466d63" }
+        ]
+      },
+      {
+        id: "frag-pro-shooter-mod",
+        type: "game",
+        genre: "Action",
+        recommended: true,
+        title: "FRAG Pro Shooter MOD APK",
+        developer: "Oh BiBi • Mod Menu",
+        version: "v4.11.0",
+        pkg: "com.ohbibi.fps",
+        storeTerm: "FRAG Pro Shooter",
+        playSearchQuery: "FRAG Pro Shooter Oh BiBi",
+        cleanIconQuery: "FRAG Pro Shooter Oh BiBi Google Play Store app icon",
+        cleanShotBase: "FRAG Pro Shooter Oh BiBi",
+        modBadges: [
+          "MOD Menu Interaktif",
+          "Unlimited Coins & Diamonds",
+          "Unlock All 100+ Heroes",
+          "Unlimited Ammo & No Reload",
+          "High Damage / One Hit",
+          "Anti-Ban & No Ads"
+        ],
+        features: [
+          "Unlimited Coins, Diamonds & Joker Cards untuk upgrade semua kartu karakter ke level maksimal.",
+          "Unlock semua Hero FRAG legendaris beserta skin senjata.",
+          "MOD Menu: Peluru tak terbatas (No Reload), High Damage, dan kemampuan Ability instan."
+        ],
+        links: [
+          { label: "Download FRAG Pro Shooter Mod Apk", url: "https://move2link.co/2ecaa8d" }
         ]
       },
       {
@@ -3718,6 +4182,9 @@
       document.getElementById('appCountBadge').textContent = apps.length;
       document.getElementById('freeCountBadge').textContent = MOD_ITEMS.length;
 
+      // Pastikan tampilan default selalu Grid agar mudah ditemukan pengunjung
+      setLayoutMode('grid');
+
       renderRecommendations();
       renderLists();
 
@@ -3822,6 +4289,11 @@
     // Sinkronisasi Semua Icon & Screenshot Game/Aplikasi
     async function syncAllStoreAssets() {
       const urgentIds = [
+        "minecraft-mod-apk",
+        "xtreme-motorbikes-mod",
+        "drag-bike-201m-sunmori",
+        "soul-knight-mod",
+        "frag-pro-shooter-mod",
         "worms-zone-io",
         "super-bear-adventure",
         "herex-simulator-indonesia",
@@ -3937,13 +4409,13 @@
         apps = apps.filter(i => i.title.toLowerCase().includes(q) || i.developer.toLowerCase().includes(q));
       }
 
-      const displayedGames = (!showAllGames && currentTab === 'home' && !q) ? games.slice(0, 10) : games;
+      const displayedGames = (!showAllGames && currentTab === 'home' && !q) ? games.slice(0, 12) : games;
 
       gameListEl.innerHTML = displayedGames.length
         ? displayedGames.map(createCardHTML).join('')
-        : `<p style="color:var(--text-muted); font-size:13px;">Tidak ada game yang cocok.</p>`;
+        : `<p style="color:var(--text-muted); font-size:13px; grid-column: 1 / -1;">Tidak ada game yang cocok.</p>`;
 
-      if (currentTab === 'home' && !q && games.length > 10) {
+      if (currentTab === 'home' && !q && games.length > 12) {
         gameMoreWrap.style.display = 'flex';
         document.getElementById('toggleGameBtn').textContent = showAllGames
           ? 'Sembunyikan Sebagian ⌃'
@@ -3954,7 +4426,7 @@
 
       appListEl.innerHTML = apps.length
         ? apps.map(createCardHTML).join('')
-        : `<p style="color:var(--text-muted); font-size:13px;">Tidak ada aplikasi yang cocok.</p>`;
+        : `<p style="color:var(--text-muted); font-size:13px; grid-column: 1 / -1;">Tidak ada aplikasi yang cocok.</p>`;
     }
 
     function toggleShowAllGames() {
@@ -4098,7 +4570,7 @@
         }
       }
 
-      const todayStr = "Update: 21 Oktober 2026";
+      const todayStr = "Update: 24 Oktober 2026";
       const mainLinksHTML = item.links.map(l => {
         const safeLabel = l.label.replace(/'/g, "\\'");
         return `
@@ -4149,7 +4621,7 @@
 
       const keysHTML = item.links.filter(l => l.key).map(l => `
         <div style="margin-bottom:10px;">
-          <div style="color:#94a3b8; font-size:12px;">Login Menu (${l.label.split('(')[0].trim()}) :</div>
+          <div style="color:#bae6fd; font-size:12px;">Login Menu (${l.label.split('(')[0].trim()}) :</div>
           <div>• Input Username & Key</div>
           <div class="key-box">
             <code>Key: ${l.key}</code>
@@ -4161,9 +4633,9 @@
       const featuresDescHTML = item.features.map(f => `• ${f}`).join('<br/>');
       document.getElementById('detailDescBox').innerHTML = `
         ${keysHTML}
-        <div style="font-weight:700; color:#f8fafc; margin-bottom:4px;">Penjelasan Fitur MOD:</div>
+        <div style="font-weight:700; color:#f0f9ff; margin-bottom:4px;">Penjelasan Fitur MOD:</div>
         <div>${featuresDescHTML}</div>
-        <div style="margin-top:10px; padding-top:8px; border-top:1px solid rgba(255,255,255,0.06); color:#94a3b8; font-size:11.5px;">
+        <div style="margin-top:10px; padding-top:8px; border-top:1px solid rgba(255,255,255,0.06); color:#bae6fd; font-size:11.5px;">
           📥 <strong>Cara Install:</strong> Download file melalui tombol di atas, aktifkan izin <em>Unknown Sources</em>, lalu install APK & mainkan.
         </div>
       `;
@@ -4328,8 +4800,10 @@
     function setLayoutMode(mode) {
       const gameList = document.getElementById('gameList');
       const appList = document.getElementById('appList');
-      document.getElementById('modeListBtn').classList.toggle('active', mode === 'list');
-      document.getElementById('modeGridBtn').classList.toggle('active', mode === 'grid');
+      const listBtn = document.getElementById('modeListBtn');
+      const gridBtn = document.getElementById('modeGridBtn');
+      if (listBtn) listBtn.classList.toggle('active', mode === 'list');
+      if (gridBtn) gridBtn.classList.toggle('active', mode === 'grid');
 
       if (mode === 'grid') {
         gameList.classList.add('grid-mode');
