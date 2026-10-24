@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -26,14 +27,14 @@
 
   <style>
     :root {
-      --bg-main: #040b1c;
-      --bg-secondary: #081533;
-      --bg-card: rgba(12, 28, 66, 0.80);
-      --bg-card-hover: rgba(18, 42, 96, 0.94);
-      --border-color: rgba(56, 189, 248, 0.36);
+      --bg-main: #03091a;
+      --bg-secondary: #071638;
+      --bg-card: rgba(10, 27, 68, 0.82);
+      --bg-card-hover: rgba(16, 42, 102, 0.95);
+      --border-color: rgba(56, 189, 248, 0.46);
       --accent: #38bdf8;
-      --accent-secondary: #60a5fa;
-      --accent-glow: rgba(56, 189, 248, 0.48);
+      --accent-secondary: #00e5ff;
+      --accent-glow: rgba(56, 189, 248, 0.62);
       --text-main: #f0f9ff;
       --text-muted: #93c5fd;
       --mod-red: #f43f5e;
@@ -54,12 +55,13 @@
     body {
       background-color: var(--bg-main);
       background-image:
-        radial-gradient(circle at 18% 12%, rgba(56, 189, 248, 0.34) 0%, transparent 45%),
-        radial-gradient(circle at 86% 26%, rgba(59, 130, 246, 0.30) 0%, transparent 48%),
-        radial-gradient(circle at 50% 80%, rgba(14, 165, 233, 0.28) 0%, transparent 52%),
-        radial-gradient(circle at 22% 56%, rgba(99, 102, 241, 0.20) 0%, transparent 45%),
-        radial-gradient(rgba(125, 211, 252, 0.08) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 22px 22px;
+        radial-gradient(ellipse 92% 40% at 50% 0%, rgba(0, 212, 255, 0.44) 0%, rgba(56, 189, 248, 0.24) 48%, transparent 80%),
+        radial-gradient(circle at 14% 18%, rgba(56, 189, 248, 0.40) 0%, transparent 44%),
+        radial-gradient(circle at 88% 24%, rgba(37, 99, 235, 0.38) 0%, transparent 48%),
+        radial-gradient(circle at 50% 65%, rgba(14, 165, 233, 0.32) 0%, transparent 54%),
+        radial-gradient(circle at 20% 86%, rgba(59, 130, 246, 0.28) 0%, transparent 48%),
+        radial-gradient(rgba(125, 211, 252, 0.11) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 22px 22px;
       background-attachment: fixed;
       color: var(--text-main);
       font-family: var(--font-main);
@@ -69,12 +71,12 @@
       padding-bottom: 85px;
       position: relative;
       overflow-x: hidden;
-      border-left: 1px solid rgba(56, 189, 248, 0.24);
-      border-right: 1px solid rgba(56, 189, 248, 0.24);
-      box-shadow: 0 0 75px rgba(56, 189, 248, 0.18);
+      border-left: 1px solid rgba(56, 189, 248, 0.32);
+      border-right: 1px solid rgba(56, 189, 248, 0.32);
+      box-shadow: 0 0 90px rgba(56, 189, 248, 0.28), inset 0 0 55px rgba(56, 189, 248, 0.10);
     }
 
-    /* EFEK KUNANG-KUNANG BERCAHAYA JATUH DARI ATAS (PURE CSS) */
+    /* EFEK KUNANG-KUNANG BERCAHAYA JATUH DARI ATAS SETENGAH LAYAR SAJA (PURE CSS) */
     .fireflies-layer {
       position: fixed;
       top: 0;
@@ -82,68 +84,68 @@
       transform: translateX(-50%);
       width: 100%;
       max-width: 520px;
-      height: 100vh;
+      height: 46vh;
+      max-height: 46vh;
       pointer-events: none;
       z-index: 15;
       overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.92) 60%, rgba(0,0,0,0.35) 84%, transparent 100%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.92) 60%, rgba(0,0,0,0.35) 84%, transparent 100%);
     }
 
     .firefly {
       position: absolute;
-      top: -24px;
+      top: -18px;
       border-radius: 50%;
-      background: radial-gradient(circle, #ffffff 0%, #7dd3fc 42%, #38bdf8 72%, transparent 100%);
-      box-shadow: 0 0 10px 3px rgba(56, 189, 248, 0.9), 0 0 22px 6px rgba(96, 165, 250, 0.65);
+      background: radial-gradient(circle, #ffffff 0%, #a5f3fc 40%, #38bdf8 72%, transparent 100%);
+      box-shadow: 0 0 11px 3px rgba(56, 189, 248, 0.95), 0 0 24px 6px rgba(0, 212, 255, 0.72);
       opacity: 0;
       animation: fireflyFall linear infinite;
     }
 
     .firefly.warm {
       background: radial-gradient(circle, #ffffff 0%, #fde68a 45%, #38bdf8 80%, transparent 100%);
-      box-shadow: 0 0 11px 3px rgba(253, 224, 71, 0.85), 0 0 24px 6px rgba(56, 189, 248, 0.7);
+      box-shadow: 0 0 11px 3px rgba(253, 224, 71, 0.88), 0 0 24px 6px rgba(56, 189, 248, 0.75);
     }
 
-    .firefly:nth-child(1)  { left: 6%;  width: 6px; height: 6px; animation-duration: 9s;   animation-delay: 0s;   --sway: 24px; }
-    .firefly:nth-child(2)  { left: 14%; width: 5px; height: 5px; animation-duration: 12s;  animation-delay: 1.8s; --sway: -20px; }
-    .firefly:nth-child(3)  { left: 23%; width: 7px; height: 7px; animation-duration: 10.5s;animation-delay: 3.4s; --sway: 28px; }
-    .firefly:nth-child(4)  { left: 31%; width: 4px; height: 4px; animation-duration: 8.5s; animation-delay: 0.7s; --sway: -16px; }
-    .firefly:nth-child(5)  { left: 39%; width: 6px; height: 6px; animation-duration: 13s;  animation-delay: 4.5s; --sway: 22px; }
-    .firefly:nth-child(6)  { left: 48%; width: 7px; height: 7px; animation-duration: 9.8s; animation-delay: 2.2s; --sway: -26px; }
-    .firefly:nth-child(7)  { left: 56%; width: 5px; height: 5px; animation-duration: 11.2s;animation-delay: 5.1s; --sway: 18px; }
-    .firefly:nth-child(8)  { left: 64%; width: 6px; height: 6px; animation-duration: 8.8s; animation-delay: 1.2s; --sway: -22px; }
-    .firefly:nth-child(9)  { left: 73%; width: 8px; height: 8px; animation-duration: 12.5s;animation-delay: 3.9s; --sway: 26px; }
-    .firefly:nth-child(10) { left: 81%; width: 5px; height: 5px; animation-duration: 10.2s;animation-delay: 2.7s; --sway: -18px; }
-    .firefly:nth-child(11) { left: 89%; width: 6px; height: 6px; animation-duration: 9.4s; animation-delay: 0.4s; --sway: 20px; }
-    .firefly:nth-child(12) { left: 95%; width: 5px; height: 5px; animation-duration: 11.8s;animation-delay: 4.2s; --sway: -24px; }
-    .firefly:nth-child(13) { left: 18%; width: 6px; height: 6px; animation-duration: 10.8s;animation-delay: 6.2s; --sway: 20px; }
-    .firefly:nth-child(14) { left: 44%; width: 5px; height: 5px; animation-duration: 9.2s; animation-delay: 5.6s; --sway: -20px; }
-    .firefly:nth-child(15) { left: 68%; width: 7px; height: 7px; animation-duration: 11.5s;animation-delay: 6.8s; --sway: 24px; }
-    .firefly:nth-child(16) { left: 85%; width: 4px; height: 4px; animation-duration: 8.6s; animation-delay: 3.1s; --sway: -15px; }
+    .firefly:nth-child(1)  { left: 6%;  width: 6px; height: 6px; animation-duration: 7.5s; animation-delay: 0s;   --sway: 18px; }
+    .firefly:nth-child(2)  { left: 14%; width: 5px; height: 5px; animation-duration: 9.5s; animation-delay: 1.5s; --sway: -16px; }
+    .firefly:nth-child(3)  { left: 23%; width: 7px; height: 7px; animation-duration: 8.4s; animation-delay: 2.8s; --sway: 22px; }
+    .firefly:nth-child(4)  { left: 31%; width: 4px; height: 4px; animation-duration: 7.2s; animation-delay: 0.6s; --sway: -14px; }
+    .firefly:nth-child(5)  { left: 39%; width: 6px; height: 6px; animation-duration: 10.2s;animation-delay: 3.9s; --sway: 18px; }
+    .firefly:nth-child(6)  { left: 48%; width: 7px; height: 7px; animation-duration: 8.0s; animation-delay: 1.9s; --sway: -20px; }
+    .firefly:nth-child(7)  { left: 56%; width: 5px; height: 5px; animation-duration: 9.1s; animation-delay: 4.4s; --sway: 15px; }
+    .firefly:nth-child(8)  { left: 64%; width: 6px; height: 6px; animation-duration: 7.6s; animation-delay: 1.1s; --sway: -18px; }
+    .firefly:nth-child(9)  { left: 73%; width: 7px; height: 7px; animation-duration: 9.8s; animation-delay: 3.2s; --sway: 20px; }
+    .firefly:nth-child(10) { left: 81%; width: 5px; height: 5px; animation-duration: 8.3s; animation-delay: 2.3s; --sway: -15px; }
+    .firefly:nth-child(11) { left: 89%; width: 6px; height: 6px; animation-duration: 7.9s; animation-delay: 0.4s; --sway: 16px; }
+    .firefly:nth-child(12) { left: 95%; width: 5px; height: 5px; animation-duration: 9.4s; animation-delay: 3.6s; --sway: -18px; }
+    .firefly:nth-child(13) { left: 18%; width: 6px; height: 6px; animation-duration: 8.7s; animation-delay: 5.0s; --sway: 16px; }
+    .firefly:nth-child(14) { left: 44%; width: 5px; height: 5px; animation-duration: 7.8s; animation-delay: 4.7s; --sway: -16px; }
+    .firefly:nth-child(15) { left: 68%; width: 6px; height: 6px; animation-duration: 9.2s; animation-delay: 5.5s; --sway: 19px; }
+    .firefly:nth-child(16) { left: 85%; width: 4px; height: 4px; animation-duration: 7.4s; animation-delay: 2.6s; --sway: -12px; }
 
     @keyframes fireflyFall {
       0% {
-        transform: translate3d(0, -20px, 0) scale(0.6);
+        transform: translate3d(0, -16px, 0) scale(0.55);
         opacity: 0;
       }
-      15% {
+      18% {
         opacity: 0.95;
       }
-      35% {
-        transform: translate3d(var(--sway, 20px), 35vh, 0) scale(1.1);
-        opacity: 0.45;
+      45% {
+        transform: translate3d(var(--sway, 18px), 18vh, 0) scale(1.08);
+        opacity: 0.55;
       }
-      55% {
-        opacity: 1;
+      70% {
+        transform: translate3d(calc(var(--sway, 18px) * -0.6), 31vh, 0) scale(0.95);
+        opacity: 0.88;
       }
-      75% {
-        transform: translate3d(calc(var(--sway, 20px) * -0.8), 75vh, 0) scale(0.9);
-        opacity: 0.6;
-      }
-      90% {
-        opacity: 0.9;
+      88% {
+        opacity: 0.32;
       }
       100% {
-        transform: translate3d(var(--sway, 20px), 106vh, 0) scale(0.5);
+        transform: translate3d(var(--sway, 18px), 44vh, 0) scale(0.45);
         opacity: 0;
       }
     }
