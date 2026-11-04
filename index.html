@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -2712,16 +2713,17 @@
     }
 
     // Bersihkan cache khusus untuk game yang diperbaiki agar langsung memuat icon & screenshot Google Play Store terbaru
-    if (!safeGetStorage('tanciro_store_v9_cleaned')) {
+    if (!safeGetStorage('tanciro_store_v10_cleaned')) {
       ['roblox-mod-menu', 'ontel-simulator-indonesia', 'worms-zone-io', 'super-bear-adventure', 'herex-simulator-indonesia', 'extreme-car-driving', 'truckers-of-europe-3', 'xtreme-motorbikes-mod', 'drag-bike-201m-sunmori', 'soul-knight-mod', 'frag-pro-shooter-mod', 'minecraft-mod-apk'].forEach(id => {
         safeRemoveStorage('ps_v5_icon_' + id);
         safeRemoveStorage('ps_v5_shots_' + id);
       });
-      safeSetStorage('tanciro_store_v9_cleaned', 'true');
+      safeSetStorage('tanciro_store_v10_cleaned', 'true');
     }
 
-    // Ambil Icon Tersimpan atau Gunakan Query Bersih Play Store
+    // Ambil Icon Tersimpan atau Gunakan Direct Icon Play Store Resmi
     function getBestIconUrl(item) {
+      if (item.directIcon) return item.directIcon;
       const cached = safeGetStorage('ps_v5_icon_' + item.id);
       if (cached) return cached;
       return `https://tse2.mm.bing.net/th?q=${encodeURIComponent(item.cleanIconQuery)}&w=200&h=200&c=7&rs=1&p=0`;
@@ -2735,6 +2737,9 @@
           const parsed = JSON.parse(cached);
           if (Array.isArray(parsed) && parsed.length > 0) return parsed;
         } catch (e) {}
+      }
+      if (Array.isArray(item.directShots) && item.directShots.length > 0) {
+        return item.directShots;
       }
       const queries = item.shotQueries || [
         `${item.cleanShotBase} gameplay screenshot google play`,
@@ -2788,20 +2793,29 @@
         genre: "Simulation",
         recommended: true,
         title: "Ontel Simulator Indonesia MOD Terbaru",
-        developer: "Indie Local Studio • Mod Indonesia",
+        developer: "VerlyGameDev • Mod Indonesia",
         version: "UPDATE",
-        pkg: "com.ontelsimulator.indonesia",
+        pkg: "net.verlygamedev.ontelsimulator",
+        directIcon: "https://play-lh.googleusercontent.com/V9gGP09GVD5p6XePXVz_eJP1YQ6t8ZC7HoaM71RcC5UKcwT-oUi_FLt_-Qo60Smn6p-nxA89CX5fJWVlYgTIp0I=s256-rw",
         scrapePlayStoreFirst: true,
-        playSearchQuery: "Ontel Simulator Indonesia",
-        cleanIconQuery: "Ontel Simulator Indonesia Google Play app icon",
-        cleanShotBase: "Ontel Simulator Indonesia",
+        playSearchQuery: "net.verlygamedev.ontelsimulator",
+        cleanIconQuery: "Ontel Simulator Indonesia VerlyGameDev Google Play icon",
+        cleanShotBase: "Ontel Simulator Indonesia VerlyGameDev",
+        directShots: [
+          "https://image.winudf.com/v2/image1/bmV0LnZlcmx5Z2FtZWRldi5vbnRlbHNpbXVsYXRvcl9zY3JlZW5fMF8xNzkyNjIyMzA4XzAwMg/screen-0.jpg?fakeurl=1&type=.jpg",
+          "https://tse1.mm.bing.net/th?q=Ontel+Simulator+Indonesia+VerlyGameDev+BMX+gameplay+screenshot&w=680&h=382&c=7&rs=1&p=0",
+          "https://tse2.mm.bing.net/th?q=Ontel+Simulator+Indonesia+VerlyGameDev+modifikasi+sepeda+BMX+garasi&w=680&h=382&c=7&rs=1&p=0",
+          "https://tse1.mm.bing.net/th?q=Ontel+Simulator+Indonesia+VerlyGameDev+mabar+sepeda+jalanan+indonesia&w=680&h=382&c=7&rs=1&p=0",
+          "https://tse2.mm.bing.net/th?q=Ontel+Simulator+Indonesia+VerlyGameDev+balap+sepeda+BMX+android&w=680&h=382&c=7&rs=1&p=0",
+          "https://tse1.mm.bing.net/th?q=Ontel+Simulator+Indonesia+OSI+VerlyGameDev+Google+Play+screenshot&w=680&h=382&c=7&rs=1&p=0"
+        ],
         shotQueries: [
-          "Ontel Simulator Indonesia Google Play gameplay screenshot",
-          "Game Ontel Simulator Indonesia sepeda ontel gameplay",
-          "Ontel Simulator Indonesia modifikasi sepeda garasi screenshot",
-          "Ontel Simulator Indonesia jalanan desa indonesia gameplay",
-          "Ontel Simulator Indonesia balap sepeda ontel screenshot",
-          "Ontel Simulator Indonesia android gameplay screen"
+          "Ontel Simulator Indonesia VerlyGameDev BMX gameplay screenshot",
+          "Ontel Simulator Indonesia VerlyGameDev modifikasi sepeda BMX garasi",
+          "Ontel Simulator Indonesia VerlyGameDev mabar sepeda jalanan indonesia",
+          "Ontel Simulator Indonesia VerlyGameDev balap sepeda BMX android",
+          "Ontel Simulator Indonesia OSI VerlyGameDev Google Play screenshot",
+          "net.verlygamedev.ontelsimulator gameplay screenshot"
         ],
         modBadges: [
           "Unlimited Money / Uang",
@@ -2935,20 +2949,29 @@
         genre: "Racing",
         recommended: true,
         title: "Drag Bike 201m Sunmori MOD APK",
-        developer: "IDBS / Sunmori Studio • Mod Indonesia",
+        developer: "Mari Berkembang • Mod Indonesia",
         version: "UPDATE",
-        pkg: "com.sunmori.dragbike201m",
+        pkg: "com.MariBerkembang.DragBike201mSunmori",
+        directIcon: "https://play-lh.googleusercontent.com/thnWWXoIVbYjwO9TUmMypdLCkG_yMG8EAQLZjfoCv2e7YDbXwlpU05zMqpinPDCEY8O_feWDCZDAxV5b51mWCg=s256-rw",
         scrapePlayStoreFirst: true,
-        playSearchQuery: "Drag Bike 201m Sunmori Simulator Indonesia",
-        cleanIconQuery: "Drag Bike 201m Sunmori Indonesia Google Play app icon",
-        cleanShotBase: "Drag Bike 201m Sunmori Indonesia",
+        playSearchQuery: "com.MariBerkembang.DragBike201mSunmori",
+        cleanIconQuery: "Drag Bike 201m Sunmori Mari Berkembang Google Play icon",
+        cleanShotBase: "Drag Bike 201m Sunmori Mari Berkembang",
+        directShots: [
+          "https://play-lh.googleusercontent.com/_nueoD_ocs4hDoe4q4zKzdtskd5ArjOpGUL8x3ceDZ-Dhy-xlOOWtMZJVX9JIVeSdvbLHHWOac4yThzFOGVAALM=w720-h405-rw",
+          "https://image.winudf.com/v2/image1/Y29tLk1hcmlCZXJrZW1iYW5nLkRyYWdCaWtlMjAxbVN1bm1vcmlfc2NyZWVuXzBfMTc4Nzk5MjMyN18wMDI/screen-0.jpg?fakeurl=1&type=.jpg",
+          "https://tse1.mm.bing.net/th?q=Drag+Bike+201m+Sunmori+Mari+Berkembang+Google+Play+screenshot&w=680&h=382&c=7&rs=1&p=0",
+          "https://tse2.mm.bing.net/th?q=Drag+Bike+201m+Sunmori+Mari+Berkembang+gameplay+balap+motor&w=680&h=382&c=7&rs=1&p=0",
+          "https://tse1.mm.bing.net/th?q=Drag+Bike+201m+Sunmori+modifikasi+motor+drag+garasi+screenshot&w=680&h=382&c=7&rs=1&p=0",
+          "https://tse2.mm.bing.net/th?q=com.MariBerkembang.DragBike201mSunmori+gameplay+screenshot&w=680&h=382&c=7&rs=1&p=0"
+        ],
         shotQueries: [
-          "Drag Bike 201m Sunmori Indonesia gameplay screenshot",
-          "Balap motor Drag Bike 201m Indonesia android gameplay",
-          "Sunmori Simulator Indonesia motor drag garasi modifikasi",
-          "Drag Bike 201m lintasan balap lurus malam screenshot",
-          "Game motor Sunmori Drag Bike 201m Indonesia",
-          "Modifikasi motor thailook Drag Bike 201m gameplay"
+          "Drag Bike 201m Sunmori Mari Berkembang Google Play screenshot",
+          "Drag Bike 201m Sunmori Mari Berkembang gameplay balap motor",
+          "Drag Bike 201m Sunmori modifikasi motor drag garasi screenshot",
+          "com.MariBerkembang.DragBike201mSunmori gameplay screenshot",
+          "Drag Bike 201m Sunmori lintasan balap 201 meter android",
+          "Drag Bike 201m Sunmori sunmori jalanan malam screenshot"
         ],
         modBadges: [
           "Unlimited Money / Uang",
@@ -4246,7 +4269,7 @@
     // =========================================================================
     // AUTO-SORT UPDATE ENGINE: OTOMATIS NAIKKAN GAME/APP YANG BARU DI-UPDATE KE #1
     // =========================================================================
-    const BASELINE_ITEM_HASHES = {"roblox-mod-menu":"1qvr6v3","ontel-simulator-indonesia":"1qiz856","the-spike-cross":"1nspfbt","minecraft-mod-apk":"1wmbp6t","xtreme-motorbikes-mod":"lod2ws","drag-bike-201m-sunmori":"iho1o1","soul-knight-mod":"ylv1zi","frag-pro-shooter-mod":"14swb8s","overpeak-mod":"5np4c5","bussid-mod":"hisfhs","super-bear-adventure":"1cvdmid","pvz-fusion-mod":"hxz7zx","cpm-2-mod":"mrd3xf","truckers-of-europe-3":"vb9s45","fr-legends-mod":"1h54ukb","beach-buggy-racing-2":"qj5qwh","herex-simulator-indonesia":"1obcdm3","carx-drift-racing-2":"1fwcun8","rally-horizon-mod":"1h5lo8z","hungry-shark-world":"12ei85q","shadow-fight-2":"1tto8kt","stick-war-legacy":"7erial","football-league-mod":"1svt5dw","fc-mobile-mod":"1hfpuw6","pvz-2-mod":"1035mus","off-the-road-2":"984o2n","reborn-imoba-mlbb":"410ww3","nbs-reborn-mlbb":"14r589n","takashi-ninja-samurai":"181kbn7","subway-surfers-mod":"16y72qm","cpm--mod":"1etic83","extreme-car-driving":"1nargti","carx-highway-racing":"17luktq","car-simulator-2":"14dgaa8","worms-zone-io":"20fdyi","spider-fighter-3":"lbm2t6","bowmasters-mod":"1orutt0","stickman-cursed-phantom":"1oyl8wq","ff-kipas-terbaru":"bxp98c","capcut-pro-mod":"1g9puo6","freereels-mod":"1ysz7ph","spotify-premium-mod":"15jkak7","whatsapp-mb-mod":"f2z1jy","melolo-mod":"1fy3lu2","alight-motion-mod":"1x5yx97","terabox-mod":"elz1c","telegram-mod":"4tfzen","picsart-mod":"276pyo","netflix-mod":"19v8p4y"};
+    const BASELINE_ITEM_HASHES = {"roblox-mod-menu":"1qvr6v3","ontel-simulator-indonesia":"arx7ae","the-spike-cross":"1nspfbt","minecraft-mod-apk":"1wmbp6t","xtreme-motorbikes-mod":"lod2ws","drag-bike-201m-sunmori":"mqvyft","soul-knight-mod":"ylv1zi","frag-pro-shooter-mod":"14swb8s","overpeak-mod":"5np4c5","bussid-mod":"hisfhs","super-bear-adventure":"1cvdmid","pvz-fusion-mod":"hxz7zx","cpm-2-mod":"mrd3xf","truckers-of-europe-3":"vb9s45","fr-legends-mod":"1h54ukb","beach-buggy-racing-2":"qj5qwh","herex-simulator-indonesia":"1obcdm3","carx-drift-racing-2":"1fwcun8","rally-horizon-mod":"1h5lo8z","hungry-shark-world":"12ei85q","shadow-fight-2":"1tto8kt","stick-war-legacy":"7erial","football-league-mod":"1svt5dw","fc-mobile-mod":"1hfpuw6","pvz-2-mod":"1035mus","off-the-road-2":"984o2n","reborn-imoba-mlbb":"410ww3","nbs-reborn-mlbb":"14r589n","takashi-ninja-samurai":"181kbn7","subway-surfers-mod":"16y72qm","cpm--mod":"1etic83","extreme-car-driving":"1nargti","carx-highway-racing":"17luktq","car-simulator-2":"14dgaa8","worms-zone-io":"20fdyi","spider-fighter-3":"lbm2t6","bowmasters-mod":"1orutt0","stickman-cursed-phantom":"1oyl8wq","ff-kipas-terbaru":"bxp98c","capcut-pro-mod":"1g9puo6","freereels-mod":"1ysz7ph","spotify-premium-mod":"15jkak7","whatsapp-mb-mod":"f2z1jy","melolo-mod":"1fy3lu2","alight-motion-mod":"1x5yx97","terabox-mod":"elz1c","telegram-mod":"4tfzen","picsart-mod":"276pyo","netflix-mod":"19v8p4y"};
 
     function computeItemHash(item) {
       const payload = JSON.stringify({
@@ -4365,12 +4388,18 @@
 
     // 1. Ambil langsung dari Google Play Store
     async function scrapeGooglePlayDirect(item) {
+      if (item.directIcon) {
+        safeSetStorage('ps_v5_icon_' + item.id, item.directIcon);
+        updateDOMIcon(item.id, item.directIcon);
+      }
       const urlsToTry = [];
       if (item.pkg && item.pkg.includes('.')) {
         urlsToTry.push(`https://play.google.com/store/apps/details?id=${item.pkg}&hl=id&gl=ID`);
       }
-      const searchQ = item.playSearchQuery || item.cleanShotBase || item.title;
-      urlsToTry.push(`https://play.google.com/store/search?q=${encodeURIComponent(searchQ)}&c=apps&hl=id&gl=ID`);
+      if (!item.directIcon) {
+        const searchQ = item.playSearchQuery || item.cleanShotBase || item.title;
+        urlsToTry.push(`https://play.google.com/store/search?q=${encodeURIComponent(searchQ)}&c=apps&hl=id&gl=ID`);
+      }
 
       for (const targetUrl of urlsToTry) {
         const proxies = [
