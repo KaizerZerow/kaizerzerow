@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -2417,7 +2418,7 @@
       <span>Beranda</span>
     </div>
     <div class="bnav-item" id="tab-game" onclick="switchTab('game')">
-      <div class="bnav-icon">🎮<span class="bnav-badge" id="gameCountBadge">30</span></div>
+      <div class="bnav-icon">🎮<span class="bnav-badge" id="gameCountBadge">32</span></div>
       <span>Game</span>
     </div>
     <div class="bnav-item" id="tab-app" onclick="switchTab('app')">
@@ -2425,7 +2426,7 @@
       <span>Aplikasi</span>
     </div>
     <div class="bnav-item" id="tab-free" onclick="switchTab('free')">
-      <div class="bnav-icon">🎁<span class="bnav-badge" id="freeCountBadge">40</span></div>
+      <div class="bnav-icon">🎁<span class="bnav-badge" id="freeCountBadge">42</span></div>
       <span>Free</span>
     </div>
     <div class="bnav-item" onclick="toggleSettings(true)">
@@ -2712,12 +2713,12 @@
     }
 
     // Bersihkan cache khusus untuk game yang diperbaiki agar langsung memuat icon & screenshot Google Play Store terbaru
-    if (!safeGetStorage('tanciro_store_v8_cleaned')) {
-      ['worms-zone-io', 'super-bear-adventure', 'herex-simulator-indonesia', 'extreme-car-driving', 'truckers-of-europe-3', 'xtreme-motorbikes-mod', 'drag-bike-201m-sunmori', 'soul-knight-mod', 'frag-pro-shooter-mod', 'minecraft-mod-apk'].forEach(id => {
+    if (!safeGetStorage('tanciro_store_v9_cleaned')) {
+      ['roblox-mod-menu', 'ontel-simulator-indonesia', 'worms-zone-io', 'super-bear-adventure', 'herex-simulator-indonesia', 'extreme-car-driving', 'truckers-of-europe-3', 'xtreme-motorbikes-mod', 'drag-bike-201m-sunmori', 'soul-knight-mod', 'frag-pro-shooter-mod', 'minecraft-mod-apk'].forEach(id => {
         safeRemoveStorage('ps_v5_icon_' + id);
         safeRemoveStorage('ps_v5_shots_' + id);
       });
-      safeSetStorage('tanciro_store_v8_cleaned', 'true');
+      safeSetStorage('tanciro_store_v9_cleaned', 'true');
     }
 
     // Ambil Icon Tersimpan atau Gunakan Query Bersih Play Store
@@ -2753,13 +2754,81 @@
     // DATABASE LENGKAP GAME & APLIKASI
     const MOD_ITEMS = [
       {
+        id: "roblox-mod-menu",
+        type: "game",
+        genre: "Adventure",
+        recommended: true,
+        title: "Roblox MOD Menu",
+        developer: "Roblox Corporation • Mod Menu Terbaru",
+        version: "UPDATE",
+        pkg: "com.roblox.client",
+        storeTerm: "Roblox",
+        playSearchQuery: "Roblox Roblox Corporation",
+        cleanIconQuery: "Roblox Google Play Store app icon logo",
+        cleanShotBase: "Roblox mobile game",
+        modBadges: [
+          "MOD Menu Lengkap (60+ Fitur)",
+          "Fly & Infinite Multi-Jump",
+          "Wallhack / Tembus Dinding",
+          "God Mode & Teleport",
+          "Speed Hack & Night Mode",
+          "Anti-Ban & Smooth 60FPS"
+        ],
+        features: [
+          "MOD Menu Interaktif dengan 60+ fitur yang bisa diaktifkan kapan saja di semua map/server Roblox.",
+          "Fitur Fly (Terbang), Air Jump / Multi-Jump, Wallhack (Tembus Dinding), Speed Hack, dan Teleport instan.",
+          "Dilengkapi fitur God Mode, Night Mode / X-Ray, serta optimasi Anti-Lag 60 FPS."
+        ],
+        links: [
+          { label: "Download Roblox Mod Menu Terbaru", url: "https://move2link.co/ba2a294" }
+        ]
+      },
+      {
+        id: "ontel-simulator-indonesia",
+        type: "game",
+        genre: "Simulation",
+        recommended: true,
+        title: "Ontel Simulator Indonesia MOD Terbaru",
+        developer: "Indie Local Studio • Mod Indonesia",
+        version: "UPDATE",
+        pkg: "com.ontelsimulator.indonesia",
+        scrapePlayStoreFirst: true,
+        playSearchQuery: "Ontel Simulator Indonesia",
+        cleanIconQuery: "Ontel Simulator Indonesia Google Play app icon",
+        cleanShotBase: "Ontel Simulator Indonesia",
+        shotQueries: [
+          "Ontel Simulator Indonesia Google Play gameplay screenshot",
+          "Game Ontel Simulator Indonesia sepeda ontel gameplay",
+          "Ontel Simulator Indonesia modifikasi sepeda garasi screenshot",
+          "Ontel Simulator Indonesia jalanan desa indonesia gameplay",
+          "Ontel Simulator Indonesia balap sepeda ontel screenshot",
+          "Ontel Simulator Indonesia android gameplay screen"
+        ],
+        modBadges: [
+          "Unlimited Money / Uang",
+          "Unlock Semua Sepeda Ontel",
+          "Full Modifikasi Aksesoris",
+          "Map Nuansa Desa Indonesia",
+          "Upgrade Kecepatan Max",
+          "No Ads / Bebas Iklan"
+        ],
+        features: [
+          "Unlimited Money / Uang Tak Terbatas untuk membeli seluruh koleksi sepeda ontel klasik & kustom.",
+          "Semua aksesoris modifikasi sepeda ontel dan karakter langsung terbuka secara gratis.",
+          "Bebas keliling map bernuansa jalanan desa dan kota Indonesia tanpa gangguan iklan (No Ads)."
+        ],
+        links: [
+          { label: "Download Ontel Simulator Indonesia Mod Terbaru", url: "https://move2link.co/30465c1" }
+        ]
+      },
+      {
         id: "the-spike-cross",
         type: "game",
         genre: "Sports",
         recommended: true,
         title: "The Spike Cross - Volleyball",
         developer: "SUNCYAN • NKMOD & TNK",
-        version: "v8.1.108",
+        version: "UPDATE",
         pkg: "com.daerisoft.thespikerm",
         storeTerm: "The Spike Cross Volleyball SUNCYAN",
         cleanIconQuery: "The Spike Cross Volleyball SUNCYAN Google Play app icon",
@@ -2808,7 +2877,7 @@
         recommended: true,
         title: "Minecraft MOD APK (Full Unlocked)",
         developer: "Mojang • Bedrock Edition Mod",
-        version: "v1.26.70.21",
+        version: "UPDATE",
         pkg: "com.mojang.minecraftpe",
         storeTerm: "Minecraft",
         playSearchQuery: "Minecraft Mojang",
@@ -2838,7 +2907,7 @@
         recommended: true,
         title: "Xtreme Motorbikes MOD APK",
         developer: "Xtreme Games Studio",
-        version: "v2.4.1",
+        version: "UPDATE",
         pkg: "com.xtremegames.xtrememotorbikes",
         storeTerm: "Xtreme Motorbikes",
         playSearchQuery: "Xtreme Motorbikes Xtreme Games Studio",
@@ -2868,7 +2937,7 @@
         recommended: true,
         title: "Drag Bike 201m Sunmori MOD APK",
         developer: "IDBS / Sunmori Studio • Mod Indonesia",
-        version: "Latest Mod",
+        version: "UPDATE",
         pkg: "com.sunmori.dragbike201m",
         scrapePlayStoreFirst: true,
         playSearchQuery: "Drag Bike 201m Sunmori Simulator Indonesia",
@@ -2906,7 +2975,7 @@
         recommended: true,
         title: "Soul Knight MOD APK",
         developer: "ChillyRoom • Mod Menu",
-        version: "v6.7.0",
+        version: "UPDATE",
         pkg: "com.ChillyRoom.DungeonShooter",
         storeTerm: "Soul Knight",
         playSearchQuery: "Soul Knight ChillyRoom",
@@ -2936,7 +3005,7 @@
         recommended: true,
         title: "FRAG Pro Shooter MOD APK",
         developer: "Oh BiBi • Mod Menu",
-        version: "v4.11.0",
+        version: "UPDATE",
         pkg: "com.ohbibi.fps",
         storeTerm: "FRAG Pro Shooter",
         playSearchQuery: "FRAG Pro Shooter Oh BiBi",
@@ -2966,7 +3035,7 @@
         recommended: true,
         title: "Overpeak MOD Menu",
         developer: "Overpeak Studio • 32 Bit & 64 Bit",
-        version: "v0.7",
+        version: "UPDATE",
         pkg: "com.overpeak.game",
         cleanIconQuery: "Overpeak game official app icon square logo",
         cleanShotBase: "Overpeak game",
@@ -3003,7 +3072,7 @@
         recommended: true,
         title: "Bus Simulator Indonesia (BUSSID) MOD",
         developer: "Maleo • APK + OBB + Map & Livery",
-        version: "v4.6",
+        version: "UPDATE",
         pkg: "com.maleo.bussimulatorid",
         scrapePlayStoreFirst: true,
         cleanIconQuery: "Bus Simulator Indonesia Maleo Google Play app icon square",
@@ -3044,7 +3113,7 @@
         recommended: true,
         title: "Super Bear Adventure MOD APK",
         developer: "Earthkwak Games • Mod Menu",
-        version: "v13.0.8",
+        version: "UPDATE",
         pkg: "com.earthkwak.Platformer",
         storeTerm: "Super Bear Adventure",
         playSearchQuery: "Super Bear Adventure Earthkwak Games",
@@ -3075,7 +3144,7 @@
         recommended: true,
         title: "Plants vs. Zombies Fusion MOD APK",
         developer: "PvZ Fusion Edition • Mod Menu",
-        version: "v4.1",
+        version: "UPDATE",
         pkg: "com.pvz.fusion",
         cleanIconQuery: "Plants vs Zombies Fusion Edition game icon logo",
         cleanShotBase: "Plants vs Zombies Fusion Edition",
@@ -3112,7 +3181,7 @@
         recommended: true,
         title: "Car Parking Multiplayer 2 MOD APK",
         developer: "olzhass • CPM 2 Mod Menu",
-        version: "v1.3.3.7",
+        version: "UPDATE",
         pkg: "com.olzhas.carparking.multyplayer2",
         storeTerm: "Car Parking Multiplayer 2",
         cleanIconQuery: "Car Parking Multiplayer 2 olzhass app icon logo",
@@ -3141,7 +3210,7 @@
         genre: "Simulation",
         title: "Truckers of Europe 3 MOD APK",
         developer: "Wanda Software",
-        version: "v0.9.52",
+        version: "UPDATE",
         pkg: "com.WandaSoftware.TruckersofEurope3",
         storeTerm: "Truckers of Europe 3",
         playSearchQuery: "Truckers of Europe 3 Wanda Software",
@@ -3170,7 +3239,7 @@
         genre: "Racing",
         title: "FR Legends MOD APK",
         developer: "TWIN TURBO TECH",
-        version: "v0.4.9",
+        version: "UPDATE",
         pkg: "com.fengiiley.frlegends",
         storeTerm: "FR Legends",
         cleanIconQuery: "FR Legends TWIN TURBO TECH app icon logo",
@@ -3198,7 +3267,7 @@
         genre: "Racing",
         title: "Beach Buggy Racing 2 MOD",
         developer: "Vector Unit",
-        version: "v09.03",
+        version: "UPDATE",
         pkg: "com.vectorunit.cobalt.googleplay",
         storeTerm: "Beach Buggy Racing 2",
         cleanIconQuery: "Beach Buggy Racing 2 Vector Unit app icon logo",
@@ -3226,7 +3295,7 @@
         genre: "Simulation",
         title: "Herex Simulator Indonesia Max MOD",
         developer: "itisramastudio",
-        version: "v1.0.1019",
+        version: "UPDATE",
         pkg: "com.itisramastudio.herexsimulatorindonesia",
         scrapePlayStoreFirst: true,
         playSearchQuery: "Herex Simulator Indonesia itisramastudio",
@@ -3263,7 +3332,7 @@
         genre: "Racing",
         title: "CarX Drift Racing 2 MOD APK",
         developer: "CarX Technologies",
-        version: "v1.43.0",
+        version: "UPDATE",
         pkg: "com.carxtech.carxdr2",
         storeTerm: "CarX Drift Racing 2",
         cleanIconQuery: "CarX Drift Racing 2 app icon logo",
@@ -3291,7 +3360,7 @@
         genre: "Racing",
         title: "Rally Horizon MOD APK",
         developer: "graypow",
-        version: "v2.6.4",
+        version: "UPDATE",
         pkg: "com.graypow.rallyhorizon",
         storeTerm: "Rally Horizon",
         cleanIconQuery: "Rally Horizon graypow app icon logo",
@@ -3319,7 +3388,7 @@
         genre: "Arcade",
         title: "Hungry Shark World MOD APK",
         developer: "Ubisoft Entertainment",
-        version: "v8.0.2",
+        version: "UPDATE",
         pkg: "com.ubisoft.hungrysharkworld",
         storeTerm: "Hungry Shark World",
         cleanIconQuery: "Hungry Shark World Ubisoft app icon logo",
@@ -3347,7 +3416,7 @@
         genre: "Fighting",
         title: "Shadow Fight 2 MOD APK",
         developer: "NEKKI",
-        version: "Latest Mod",
+        version: "UPDATE",
         pkg: "com.nekki.shadowfight",
         storeTerm: "Shadow Fight 2",
         cleanIconQuery: "Shadow Fight 2 NEKKI app icon logo",
@@ -3375,7 +3444,7 @@
         genre: "Strategy",
         title: "Stick War: Legacy MOD APK",
         developer: "Max Games Studios",
-        version: "Latest Mod",
+        version: "UPDATE",
         pkg: "com.maxgames.stickwarlegacy",
         storeTerm: "Stick War: Legacy",
         cleanIconQuery: "Stick War Legacy Max Games app icon logo",
@@ -3403,7 +3472,7 @@
         genre: "Sports",
         title: "Football League MOD APK",
         developer: "MOBILE SOCCER",
-        version: "2026 Mod",
+        version: "UPDATE",
         pkg: "com.ablesoccer.footballleague",
         storeTerm: "Football League 2025",
         cleanIconQuery: "Football League MOBILE SOCCER Google Play app icon",
@@ -3431,7 +3500,7 @@
         genre: "Sports",
         title: "EA SPORTS FC Mobile MOD APK",
         developer: "Electronic Arts • Mod Menu",
-        version: "Latest Mod",
+        version: "UPDATE",
         pkg: "com.ea.gp.fifamobile",
         storeTerm: "EA SPORTS FC Mobile Soccer",
         cleanIconQuery: "EA SPORTS FC Mobile app icon logo",
@@ -3459,7 +3528,7 @@
         genre: "Strategy",
         title: "Plants vs. Zombies 2 MOD APK",
         developer: "Electronic Arts",
-        version: "v13.5.1",
+        version: "UPDATE",
         pkg: "com.ea.game.pvz2_row",
         storeTerm: "Plants vs. Zombies 2",
         cleanIconQuery: "Plants vs Zombies 2 app icon logo",
@@ -3487,7 +3556,7 @@
         genre: "Racing",
         title: "Off The Road 2 (OTR 2) MOD",
         developer: "DogByte Games",
-        version: "v1.3.2",
+        version: "UPDATE",
         pkg: "com.dogbytegames.offtheroad",
         storeTerm: "Off The Road - OTR",
         cleanIconQuery: "Off The Road OTR DogByte Games app icon logo",
@@ -3516,7 +3585,7 @@
         recommended: true,
         title: "REBORN IMOBA Terbaru (MLBB)",
         developer: "Injector Tools • Unlock All Skin",
-        version: "Terbaru 2026",
+        version: "UPDATE",
         pkg: "com.mobile.legends",
         storeTerm: "Mobile Legends: Bang Bang",
         cleanIconQuery: "Reborn Imoba MLBB unlock skin app icon",
@@ -3544,7 +3613,7 @@
         genre: "MOBA",
         title: "NBS REBORN Terbaru (MLBB)",
         developer: "NBS Team • Unlock All Skin",
-        version: "Terbaru 2026",
+        version: "UPDATE",
         pkg: "com.mobile.legends",
         storeTerm: "Mobile Legends: Bang Bang",
         cleanIconQuery: "NBS Reborn MLBB unlock all skin app icon",
@@ -3572,7 +3641,7 @@
         genre: "Action",
         title: "Takashi Ninja Warrior Samurai MOD",
         developer: "Horizon Games",
-        version: "v4.0.6",
+        version: "UPDATE",
         pkg: "com.hg.takashi.ninjawarrior",
         storeTerm: "Takashi Ninja Warrior",
         cleanIconQuery: "Takashi Ninja Warrior Horizon Games app icon logo",
@@ -3600,7 +3669,7 @@
         genre: "Arcade",
         title: "Subway Surfers MOD APK",
         developer: "SYBO Games",
-        version: "Latest Mod",
+        version: "UPDATE",
         pkg: "com.kiloo.subwaysurf",
         storeTerm: "Subway Surfers",
         cleanIconQuery: "Subway Surfers SYBO Games app icon logo",
@@ -3628,7 +3697,7 @@
         genre: "Simulation",
         title: "Car Parking Multiplayer  MOD APK",
         developer: "olzhass",
-        version: "Latest Mod",
+        version: "UPDATE",
         pkg: "com.olzhas.carparking.multyplayer",
         storeTerm: "Car Parking Multiplayer",
         cleanIconQuery: "Car Parking Multiplayer olzhass app icon logo",
@@ -3656,7 +3725,7 @@
         genre: "Racing",
         title: "Extreme Car Driving Simulator MOD",
         developer: "AxesInMotion Racing",
-        version: "v7.19.0",
+        version: "UPDATE",
         pkg: "com.aim.racing",
         storeTerm: "Extreme Car Driving Simulator",
         playSearchQuery: "Extreme Car Driving Simulator AxesInMotion",
@@ -3686,7 +3755,7 @@
         recommended: true,
         title: "CarX Highway Racing MOD APK",
         developer: "CarX Technologies",
-        version: "v1.75.9",
+        version: "UPDATE",
         pkg: "com.CarXTech.highWay",
         storeTerm: "CarX Highway Racing",
         cleanIconQuery: "CarX Highway Racing CarX Technologies app icon logo",
@@ -3714,7 +3783,7 @@
         genre: "Simulation",
         title: "Car Simulator 2 MOD APK",
         developer: "OppanaGames",
-        version: "v1.64.7",
+        version: "UPDATE",
         pkg: "com.oppanagames.car.simulator",
         storeTerm: "Car Simulator 2",
         cleanIconQuery: "Car Simulator 2 OppanaGames app icon logo",
@@ -3742,7 +3811,7 @@
         genre: "Arcade",
         title: "Worms Zone.io - Voracious Snake MOD",
         developer: "CASUAL AZUR GAMES",
-        version: "v6.28.0",
+        version: "UPDATE",
         pkg: "com.wildspike.wormszone",
         scrapePlayStoreFirst: true,
         playSearchQuery: "Worms Zone.io Voracious Snake CASUAL AZUR GAMES",
@@ -3779,7 +3848,7 @@
         genre: "Action",
         title: "Spider Fighter 3 MOD APK",
         developer: "Starplay DMCC",
-        version: "v3.51.0",
+        version: "UPDATE",
         pkg: "com.starplay.spider.fighter.openworld",
         storeTerm: "Spider Fighter 3",
         cleanIconQuery: "Spider Fighter 3 Starplay DMCC app icon logo",
@@ -3807,7 +3876,7 @@
         genre: "Action",
         title: "Bowmasters MOD APK",
         developer: "Miniclip.com",
-        version: "v11.3.2",
+        version: "UPDATE",
         pkg: "com.playgendary.bowmasters",
         storeTerm: "Bowmasters",
         cleanIconQuery: "Bowmasters Miniclip app icon logo",
@@ -3835,7 +3904,7 @@
         genre: "Fighting",
         title: "Stickman Cursed: Phantom Fight MOD",
         developer: "Stickman Action Anime",
-        version: "v2.61",
+        version: "UPDATE",
         pkg: "com.stickman.cursed.phantom.fight",
         cleanIconQuery: "Stickman Cursed Phantom Fight Google Play app icon",
         cleanShotBase: "Stickman Cursed Phantom Fight",
@@ -3862,7 +3931,7 @@
         genre: "Battle Royale",
         title: "FF Kipas Terbaru (Free Fire Server)",
         developer: "FF Kipas Team",
-        version: "Update Terbaru",
+        version: "UPDATE",
         pkg: "com.dts.freefireth",
         storeTerm: "Free Fire",
         cleanIconQuery: "FF Kipas Free Fire app icon logo",
@@ -3893,7 +3962,7 @@
         recommended: true,
         title: "CapCut Pro - Video Editor MOD",
         developer: "Bytedance • Full Unlocked",
-        version: "v20.0.0 • Free",
+        version: "UPDATE",
         pkg: "com.lemon.lvoverseas",
         storeTerm: "CapCut - Video Editor",
         cleanIconQuery: "CapCut Video Editor official app icon logo",
@@ -3921,7 +3990,7 @@
         genre: "Entertainment",
         title: "FreeReels - Dramas & Reels MOD",
         developer: "FreeReels • Full Unlocked",
-        version: "v2.4.91",
+        version: "UPDATE",
         pkg: "com.freereels.app",
         storeTerm: "FreeReels",
         cleanIconQuery: "FreeReels Dramas Reels app icon logo",
@@ -3950,7 +4019,7 @@
         recommended: true,
         title: "Spotify MOD: Music and Podcasts",
         developer: "Spotify AB • Full Unlocked",
-        version: "Free Mod",
+        version: "UPDATE",
         pkg: "com.spotify.music",
         storeTerm: "Spotify: Music and Podcasts",
         cleanIconQuery: "Spotify Music official app icon logo",
@@ -3978,7 +4047,7 @@
         genre: "Communication",
         title: "WhatsApp MB MOD (WA Aero / iOS)",
         developer: "MBMods • Tema iOS",
-        version: "v3.3.3 • 118 MB",
+        version: "UPDATE",
         pkg: "com.whatsapp",
         storeTerm: "WhatsApp Messenger",
         cleanIconQuery: "WhatsApp Messenger official green app icon logo",
@@ -4006,7 +4075,7 @@
         genre: "Entertainment",
         title: "Melolo - Short Dramas & Reels MOD",
         developer: "Melolo • Full Unlocked",
-        version: "v5.4.8",
+        version: "UPDATE",
         pkg: "com.melolo.app",
         storeTerm: "Melolo",
         cleanIconQuery: "Melolo Short Dramas app icon logo",
@@ -4034,7 +4103,7 @@
         genre: "Video Editor",
         title: "Alight Motion Pro MOD APK",
         developer: "Alight Creative • Full Unlocked",
-        version: "Latest Free",
+        version: "UPDATE",
         pkg: "com.alightcreative.motion",
         storeTerm: "Alight Motion",
         cleanIconQuery: "Alight Motion Alight Creative official app icon logo",
@@ -4062,7 +4131,7 @@
         genre: "Cloud Storage",
         title: "TeraBox MOD: 1TB Cloud & AI Space",
         developer: "Flextech • Full Unlocked",
-        version: "Unlocked Free",
+        version: "UPDATE",
         pkg: "com.dubox.drive",
         storeTerm: "TeraBox: Cloud Storage Space",
         cleanIconQuery: "TeraBox Cloud Storage official app icon logo",
@@ -4090,7 +4159,7 @@
         genre: "Communication",
         title: "Telegram MOD APK",
         developer: "Telegram FZ • Unlocked Features",
-        version: "Free Mod",
+        version: "UPDATE",
         pkg: "org.telegram.messenger",
         storeTerm: "Telegram Messenger",
         cleanIconQuery: "Telegram Messenger official app icon logo",
@@ -4118,7 +4187,7 @@
         genre: "Photo & Design",
         title: "Picsart AI Photo & Video Editor MOD",
         developer: "PicsArt • Full Unlocked",
-        version: "Unlocked Free",
+        version: "UPDATE",
         pkg: "com.picsart.studio",
         storeTerm: "Picsart AI Photo Editor",
         cleanIconQuery: "Picsart AI Photo Editor official app icon logo",
@@ -4146,7 +4215,7 @@
         genre: "Entertainment",
         title: "Netflix 4K Ultra HD MOD APK",
         developer: "Netflix Inc • Full Unlocked",
-        version: "4K Ultra HD",
+        version: "UPDATE",
         pkg: "com.netflix.mediaclient",
         storeTerm: "Netflix",
         cleanIconQuery: "Netflix official app icon logo",
@@ -4175,7 +4244,101 @@
     let currentSelectedItem = null;
     let prepTimer = null;
 
+    // =========================================================================
+    // AUTO-SORT UPDATE ENGINE: OTOMATIS NAIKKAN GAME/APP YANG BARU DI-UPDATE KE #1
+    // =========================================================================
+    const BASELINE_ITEM_HASHES = {"roblox-mod-menu":"1qvr6v3","ontel-simulator-indonesia":"1qiz856","the-spike-cross":"1nspfbt","minecraft-mod-apk":"1wmbp6t","xtreme-motorbikes-mod":"lod2ws","drag-bike-201m-sunmori":"iho1o1","soul-knight-mod":"ylv1zi","frag-pro-shooter-mod":"14swb8s","overpeak-mod":"5np4c5","bussid-mod":"hisfhs","super-bear-adventure":"1cvdmid","pvz-fusion-mod":"hxz7zx","cpm-2-mod":"mrd3xf","truckers-of-europe-3":"vb9s45","fr-legends-mod":"1h54ukb","beach-buggy-racing-2":"qj5qwh","herex-simulator-indonesia":"1obcdm3","carx-drift-racing-2":"1fwcun8","rally-horizon-mod":"1h5lo8z","hungry-shark-world":"12ei85q","shadow-fight-2":"1tto8kt","stick-war-legacy":"7erial","football-league-mod":"1svt5dw","fc-mobile-mod":"1hfpuw6","pvz-2-mod":"1035mus","off-the-road-2":"984o2n","reborn-imoba-mlbb":"410ww3","nbs-reborn-mlbb":"14r589n","takashi-ninja-samurai":"181kbn7","subway-surfers-mod":"16y72qm","cpm--mod":"1etic83","extreme-car-driving":"1nargti","carx-highway-racing":"17luktq","car-simulator-2":"14dgaa8","worms-zone-io":"20fdyi","spider-fighter-3":"lbm2t6","bowmasters-mod":"1orutt0","stickman-cursed-phantom":"1oyl8wq","ff-kipas-terbaru":"bxp98c","capcut-pro-mod":"1g9puo6","freereels-mod":"1ysz7ph","spotify-premium-mod":"15jkak7","whatsapp-mb-mod":"f2z1jy","melolo-mod":"1fy3lu2","alight-motion-mod":"1x5yx97","terabox-mod":"elz1c","telegram-mod":"4tfzen","picsart-mod":"276pyo","netflix-mod":"19v8p4y"};
+
+    function computeItemHash(item) {
+      const payload = JSON.stringify({
+        t: item.title || "",
+        d: item.developer || "",
+        v: item.version || "",
+        p: item.pkg || "",
+        b: item.modBadges || [],
+        f: item.features || [],
+        l: (item.links || []).map(x => ({ label: x.label || "", url: x.url || "", key: x.key || "" }))
+      });
+      let h = 2166136261;
+      for (let i = 0; i < payload.length; i++) {
+        h ^= payload.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+      }
+      return (h >>> 0).toString(36);
+    }
+
+    function autoSortUpdatedItems() {
+      let tracker = {};
+      try {
+        tracker = JSON.parse(safeGetStorage('kaizer_auto_update_ts_v1', '{}')) || {};
+      } catch (e) {
+        tracker = {};
+      }
+
+      const now = Date.now();
+      let trackerChanged = false;
+
+      MOD_ITEMS.forEach((item, index) => {
+        item._origIndex = index;
+        const currentHash = computeItemHash(item);
+        const baseHash = BASELINE_ITEM_HASHES[item.id];
+        const saved = tracker[item.id];
+
+        let updateScore = 0;
+
+        // 1. Jika ada properti manual updatedAt / isUpdated
+        if (item.updatedAt) {
+          const parsed = typeof item.updatedAt === 'number' ? item.updatedAt : Date.parse(item.updatedAt);
+          if (!isNaN(parsed) && parsed > 0) updateScore = parsed;
+        } else if (item.isUpdated) {
+          updateScore = now;
+        }
+
+        // 2. Deteksi otomatis jika data game/aplikasi (link, key, judul, fitur, dll) diubah atau baru ditambahkan
+        if (!saved) {
+          if (!baseHash || currentHash !== baseHash) {
+            const ts = now + (MOD_ITEMS.length - index);
+            tracker[item.id] = { hash: currentHash, ts: ts };
+            updateScore = Math.max(updateScore, ts);
+            trackerChanged = true;
+          } else {
+            tracker[item.id] = { hash: currentHash, ts: 0 };
+            trackerChanged = true;
+          }
+        } else if (saved.hash !== currentHash) {
+          const ts = now + (MOD_ITEMS.length - index);
+          tracker[item.id] = { hash: currentHash, ts: ts };
+          updateScore = Math.max(updateScore, ts);
+          trackerChanged = true;
+        } else if (saved.ts > 0) {
+          updateScore = Math.max(updateScore, saved.ts);
+        } else if (!baseHash || currentHash !== baseHash) {
+          const ts = now + (MOD_ITEMS.length - index);
+          tracker[item.id] = { hash: currentHash, ts: ts };
+          updateScore = Math.max(updateScore, ts);
+          trackerChanged = true;
+        }
+
+        item._updateScore = updateScore;
+        if (updateScore > 0) {
+          item.recommended = true;
+        }
+      });
+
+      if (trackerChanged) {
+        safeSetStorage('kaizer_auto_update_ts_v1', JSON.stringify(tracker));
+      }
+
+      MOD_ITEMS.sort((a, b) => {
+        if ((b._updateScore || 0) !== (a._updateScore || 0)) {
+          return (b._updateScore || 0) - (a._updateScore || 0);
+        }
+        return a._origIndex - b._origIndex;
+      });
+    }
+
     function initApp() {
+      autoSortUpdatedItems();
       const games = MOD_ITEMS.filter(i => i.type === 'game');
       const apps = MOD_ITEMS.filter(i => i.type === 'app');
       document.getElementById('gameCountBadge').textContent = games.length;
@@ -4289,6 +4452,8 @@
     // Sinkronisasi Semua Icon & Screenshot Game/Aplikasi
     async function syncAllStoreAssets() {
       const urgentIds = [
+        "roblox-mod-menu",
+        "ontel-simulator-indonesia",
         "minecraft-mod-apk",
         "xtreme-motorbikes-mod",
         "drag-bike-201m-sunmori",
