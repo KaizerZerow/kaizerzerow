@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -4267,8 +4268,48 @@
 
     // =========================================================================
     // AUTO-SORT UPDATE ENGINE: OTOMATIS NAIKKAN GAME/APP YANG BARU DI-UPDATE KE #1
+    // & SESUAIKAN TANGGAL UPDATE OTOMATIS SAAT ITEM DIPERBARUI
     // =========================================================================
     const BASELINE_ITEM_HASHES = {"roblox-mod-menu":"1qvr6v3","ontel-simulator-indonesia":"arx7ae","the-spike-cross":"1nspfbt","minecraft-mod-apk":"1wmbp6t","xtreme-motorbikes-mod":"lod2ws","drag-bike-201m-sunmori":"mqvyft","soul-knight-mod":"ylv1zi","frag-pro-shooter-mod":"14swb8s","overpeak-mod":"5np4c5","bussid-mod":"hisfhs","super-bear-adventure":"1cvdmid","pvz-fusion-mod":"hxz7zx","cpm-2-mod":"mrd3xf","truckers-of-europe-3":"vb9s45","fr-legends-mod":"1h54ukb","beach-buggy-racing-2":"qj5qwh","herex-simulator-indonesia":"1obcdm3","carx-drift-racing-2":"1fwcun8","rally-horizon-mod":"1h5lo8z","hungry-shark-world":"12ei85q","shadow-fight-2":"1tto8kt","stick-war-legacy":"7erial","football-league-mod":"1svt5dw","fc-mobile-mod":"1hfpuw6","pvz-2-mod":"1035mus","off-the-road-2":"984o2n","reborn-imoba-mlbb":"410ww3","nbs-reborn-mlbb":"14r589n","takashi-ninja-samurai":"181kbn7","subway-surfers-mod":"16y72qm","cpm--mod":"1etic83","extreme-car-driving":"1nargti","carx-highway-racing":"17luktq","car-simulator-2":"14dgaa8","worms-zone-io":"20fdyi","spider-fighter-3":"lbm2t6","bowmasters-mod":"1orutt0","stickman-cursed-phantom":"1oyl8wq","ff-kipas-terbaru":"bxp98c","capcut-pro-mod":"1g9puo6","freereels-mod":"1ysz7ph","spotify-premium-mod":"15jkak7","whatsapp-mb-mod":"f2z1jy","melolo-mod":"1fy3lu2","alight-motion-mod":"1x5yx97","terabox-mod":"elz1c","telegram-mod":"4tfzen","picsart-mod":"276pyo","netflix-mod":"19v8p4y"};
+    const DEFAULT_BASELINE_DATE_TS = Date.UTC(2026, 10, 15); // 15 November 2026
+    const INDO_MONTHS = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
+    function getUpdateTimestamp() {
+      if (document.lastModified) {
+        const parsed = Date.parse(document.lastModified);
+        if (!isNaN(parsed) && parsed > DEFAULT_BASELINE_DATE_TS) {
+          return parsed;
+        }
+      }
+      return Date.now();
+    }
+
+    function formatIndoUpdateDate(tsOrStr) {
+      if (typeof tsOrStr === 'string' && tsOrStr.trim()) {
+        const clean = tsOrStr.trim();
+        if (/^update:/i.test(clean)) return clean;
+        const parsed = Date.parse(clean);
+        if (isNaN(parsed)) return "Update: " + clean;
+        tsOrStr = parsed;
+      }
+      const d = new Date(tsOrStr || DEFAULT_BASELINE_DATE_TS);
+      if (isNaN(d.getTime())) return "Update: 15 November 2026";
+      return `Update: ${d.getDate()} ${INDO_MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+    }
+
+    function computeLinkHash(link) {
+      const payload = JSON.stringify({
+        label: link.label || "",
+        url: link.url || "",
+        key: link.key || ""
+      });
+      let h = 2166136261;
+      for (let i = 0; i < payload.length; i++) {
+        h ^= payload.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+      }
+      return (h >>> 0).toString(36);
+    }
 
     function computeItemHash(item) {
       const payload = JSON.stringify({
@@ -4296,51 +4337,73 @@
         tracker = {};
       }
 
-      const now = Date.now();
+      const now = getUpdateTimestamp();
       let trackerChanged = false;
 
       MOD_ITEMS.forEach((item, index) => {
         item._origIndex = index;
         const currentHash = computeItemHash(item);
         const baseHash = BASELINE_ITEM_HASHES[item.id];
-        const saved = tracker[item.id];
+        const saved = tracker[item.id] || {};
+        const prevLinkHashes = saved.linkHashes || {};
+        const prevLinkTs = saved.linkTs || {};
+        const nextLinkHashes = {};
+        const nextLinkTs = {};
 
         let updateScore = 0;
 
-        // 1. Jika ada properti manual updatedAt / isUpdated
-        if (item.updatedAt) {
-          const parsed = typeof item.updatedAt === 'number' ? item.updatedAt : Date.parse(item.updatedAt);
+        // 1. Jika ada properti manual updatedAt / updateDate / isUpdated
+        if (item.updatedAt || item.updateDate) {
+          const rawDate = item.updatedAt || item.updateDate;
+          const parsed = typeof rawDate === 'number' ? rawDate : Date.parse(rawDate);
           if (!isNaN(parsed) && parsed > 0) updateScore = parsed;
         } else if (item.isUpdated) {
           updateScore = now;
         }
 
         // 2. Deteksi otomatis jika data game/aplikasi (link, key, judul, fitur, dll) diubah atau baru ditambahkan
-        if (!saved) {
+        if (!saved.hash) {
           if (!baseHash || currentHash !== baseHash) {
             const ts = now + (MOD_ITEMS.length - index);
-            tracker[item.id] = { hash: currentHash, ts: ts };
             updateScore = Math.max(updateScore, ts);
-            trackerChanged = true;
-          } else {
-            tracker[item.id] = { hash: currentHash, ts: 0 };
-            trackerChanged = true;
           }
+          trackerChanged = true;
         } else if (saved.hash !== currentHash) {
           const ts = now + (MOD_ITEMS.length - index);
-          tracker[item.id] = { hash: currentHash, ts: ts };
           updateScore = Math.max(updateScore, ts);
           trackerChanged = true;
         } else if (saved.ts > 0) {
           updateScore = Math.max(updateScore, saved.ts);
         } else if (!baseHash || currentHash !== baseHash) {
           const ts = now + (MOD_ITEMS.length - index);
-          tracker[item.id] = { hash: currentHash, ts: ts };
           updateScore = Math.max(updateScore, ts);
           trackerChanged = true;
         }
 
+        // 3. Lacak juga tanggal update per-link apabila hanya salah satu link di dalam item yang diperbarui
+        (item.links || []).forEach((l, lIdx) => {
+          const lHash = computeLinkHash(l);
+          nextLinkHashes[lIdx] = lHash;
+          if (prevLinkHashes[lIdx] && prevLinkHashes[lIdx] !== lHash) {
+            nextLinkTs[lIdx] = now;
+            trackerChanged = true;
+          } else if (prevLinkTs[lIdx]) {
+            nextLinkTs[lIdx] = prevLinkTs[lIdx];
+          } else if (updateScore > 0) {
+            nextLinkTs[lIdx] = updateScore;
+          }
+          l._updateTs = nextLinkTs[lIdx] || updateScore || DEFAULT_BASELINE_DATE_TS;
+        });
+
+        tracker[item.id] = {
+          hash: currentHash,
+          ts: updateScore,
+          linkHashes: nextLinkHashes,
+          linkTs: nextLinkTs
+        };
+
         item._updateScore = updateScore;
+        item._displayUpdateTs = updateScore > 0 ? updateScore : DEFAULT_BASELINE_DATE_TS;
         if (updateScore > 0) {
           item.recommended = true;
         }
@@ -4762,9 +4825,12 @@
         }
       }
 
-      const todayStr = "Update: 24 Oktober 2026";
+      const itemUpdateStr = formatIndoUpdateDate(item.updatedAt || item.updateDate || item._displayUpdateTs);
       const mainLinksHTML = item.links.map(l => {
         const safeLabel = l.label.replace(/'/g, "\\'");
+        const linkDateStr = (l.updatedAt || l.updateDate || l.date)
+          ? formatIndoUpdateDate(l.updatedAt || l.updateDate || l.date)
+          : (l._updateTs ? formatIndoUpdateDate(l._updateTs) : itemUpdateStr);
         return `
           <div>
             <button type="button" class="dl-link-item" onclick="openPreLandingGate('${l.url}', '${safeLabel}')">
@@ -4772,7 +4838,7 @@
                 <span style="font-size:20px;">📥</span>
                 <div>
                   <h5>${l.label}</h5>
-                  <small>${todayStr} • Server Utama</small>
+                  <small>${linkDateStr} • Server Utama</small>
                 </div>
               </div>
               <span>›</span>
